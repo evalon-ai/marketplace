@@ -1,0 +1,20 @@
+{
+  "name": "evalon-hooks",
+  "interface": {
+    "displayName": "Evalon Hooks"
+  },
+  "plugins": [
+    {
+      "name": "codex-runtime-hooks",
+      "source": {
+        "source": "local",
+        "path": "./plugins/codex-runtime-hooks"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Developer Tools"
+    }
+  ]
+}
