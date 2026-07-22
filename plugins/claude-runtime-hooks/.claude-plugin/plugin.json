@@ -1,0 +1,11 @@
+{
+  "name": "claude-runtime-hooks",
+  "version": "1.0.0",
+  "description": "Evalon runtime telemetry hooks (observe-only, fail-open).",
+  "author": {
+    "name": "Evalon Platform",
+    "email": "platform@evalon.ai"
+  },
+  "keywords": ["evalon", "runtime", "telemetry", "hooks"],
+  "hooks": "./hooks/hooks.json"
+}

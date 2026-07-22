@@ -1,0 +1,59 @@
+{
+  "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "npx -y @evalon-ai/agent-hook@1.0.2 --runner codex",
+            "statusMessage": "Evalon runtime report"
+          }
+        ]
+      }
+    ],
+    "UserPromptSubmit": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "npx -y @evalon-ai/agent-hook@1.0.2 --runner codex",
+            "statusMessage": "Evalon runtime report"
+          }
+        ]
+      }
+    ],
+    "PreToolUse": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "npx -y @evalon-ai/agent-hook@1.0.2 --runner codex",
+            "statusMessage": "Evalon runtime report"
+          }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "npx -y @evalon-ai/agent-hook@1.0.2 --runner codex",
+            "statusMessage": "Evalon runtime report"
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "npx -y @evalon-ai/agent-hook@1.0.2 --runner codex",
+            "statusMessage": "Evalon runtime report"
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "hooks": {
+    "sessionStart": [
+      {
+        "command": "npx -y @evalon-ai/agent-hook@1.0.2 --runner cursor"
+      }
+    ],
+    "beforeSubmitPrompt": [
+      {
+        "command": "npx -y @evalon-ai/agent-hook@1.0.2 --runner cursor"
+      }
+    ],
+    "preToolUse": [
+      {
+        "command": "npx -y @evalon-ai/agent-hook@1.0.2 --runner cursor"
+      }
+    ],
+    "postToolUse": [
+      {
+        "command": "npx -y @evalon-ai/agent-hook@1.0.2 --runner cursor"
+      }
+    ],
+    "postToolUseFailure": [
+      {
+        "command": "npx -y @evalon-ai/agent-hook@1.0.2 --runner cursor"
+      }
+    ],
+    "subagentStart": [
+      {
+        "command": "npx -y @evalon-ai/agent-hook@1.0.2 --runner cursor"
+      }
+    ],
+    "subagentStop": [
+      {
+        "command": "npx -y @evalon-ai/agent-hook@1.0.2 --runner cursor"
+      }
+    ],
+    "stop": [
+      {
+        "command": "npx -y @evalon-ai/agent-hook@1.0.2 --runner cursor"
+      }
+    ]
+  }
+}
