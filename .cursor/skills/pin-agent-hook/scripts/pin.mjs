@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 /**
- * Pin @evalon-ai/agent-hook and bump plugin build versions.
- * Usage: node pin.mjs <packageVersion> <pluginVersion>
+ * Pin @evalon-ai/agent-hook and set plugin build versions to the same semver.
+ * Usage: node pin.mjs <version>
  * Does not prompt — caller must confirm before running.
  */
 import fs from "node:fs";
@@ -12,13 +12,13 @@ const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "../../.
 const pkgRe = /@evalon-ai\/agent-hook@\d+\.\d+\.\d+/g;
 const semver = /^\d+\.\d+\.\d+$/;
 
-const [, , packageVersion, pluginVersion] = process.argv;
-if (!semver.test(packageVersion || "") || !semver.test(pluginVersion || "")) {
-  console.error("Usage: node pin.mjs <packageVersion> <pluginVersion>");
+const [, , version] = process.argv;
+if (!semver.test(version || "")) {
+  console.error("Usage: node pin.mjs <version>");
   process.exit(1);
 }
 
-const pin = `@evalon-ai/agent-hook@${packageVersion}`;
+const pin = `@evalon-ai/agent-hook@${version}`;
 const files = {
   hooks: [
     "plugins/claude-runtime-hooks/hooks/hooks.json",
@@ -52,10 +52,10 @@ for (const rel of files.plugins) {
   const abs = path.join(root, rel);
   const json = JSON.parse(fs.readFileSync(abs, "utf8"));
   const old = json.version;
-  json.version = pluginVersion;
+  json.version = version;
   fs.writeFileSync(abs, `${JSON.stringify(json, null, 2)}\n`);
   changed += 1;
-  console.log(`updated ${rel}: ${old} → ${pluginVersion}`);
+  console.log(`updated ${rel}: ${old} → ${version}`);
 }
 
-console.log(`done: package ${pin}, plugin ${pluginVersion} (${changed} files)`);
+console.log(`done: ${pin} (= plugin version) (${changed} files)`);
