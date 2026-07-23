@@ -1,19 +1,27 @@
 {
   "name": "codex-runtime-hooks",
-  "version": "1.0.0",
+  "version": "1.0.3",
   "description": "Evalon Layer-3 runtime telemetry hooks (observe-only, fail-open).",
   "author": {
     "name": "Evalon Platform",
     "email": "platform@evalon.ai"
   },
-  "keywords": ["evalon", "runtime", "telemetry", "hooks"],
+  "keywords": [
+    "evalon",
+    "runtime",
+    "telemetry",
+    "hooks"
+  ],
   "interface": {
     "displayName": "Codex Runtime Hooks",
     "shortDescription": "Observe-only runtime telemetry hooks for Codex.",
     "longDescription": "Provides Evalon Layer-3 runtime telemetry metadata for Codex sessions while keeping execution observe-only and fail-open.",
     "developerName": "Evalon Platform",
     "category": "Developer Tools",
-    "capabilities": ["Hooks", "Telemetry"],
+    "capabilities": [
+      "Hooks",
+      "Telemetry"
+    ],
     "defaultPrompt": [
       "Review the runtime telemetry hook setup."
     ]

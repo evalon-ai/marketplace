@@ -62,7 +62,7 @@ Project `.claude/settings.json`:
 Configure collector URL:
 
 ```bash
-npx -y @evalon-ai/agent-hook@1.0.2 configure \
+npx -y @evalon-ai/agent-hook@1.0.3 configure \
   --url "https://hooks.evalon.ai/<orgToken>/hook"
 ```
 
@@ -87,7 +87,7 @@ Restart runners; confirm events in the collector.
 If the repo already used file-wiring install, migrate first:
 
 ```bash
-npx -y @evalon-ai/agent-hook@1.0.2 migrate-to-plugin
+npx -y @evalon-ai/agent-hook@1.0.3 migrate-to-plugin
 ```
 
 Do **not** also keep Evalon per-event blocks in runner settings — that double-POSTs.
