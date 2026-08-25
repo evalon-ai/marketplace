@@ -5,8 +5,8 @@
         "hooks": [
           {
             "type": "command",
-            "command": "npx -y @evalon-ai/agent-hook@1.0.3 --runner codex",
-            "statusMessage": "Evalon runtime report"
+            "command": "npx -y @ev-ai/agent-hook@1.0.9 --runner codex",
+            "statusMessage": "ev-ai runtime report"
           }
         ]
       }
@@ -16,8 +16,8 @@
         "hooks": [
           {
             "type": "command",
-            "command": "npx -y @evalon-ai/agent-hook@1.0.3 --runner codex",
-            "statusMessage": "Evalon runtime report"
+            "command": "npx -y @ev-ai/agent-hook@1.0.9 --runner codex",
+            "statusMessage": "ev-ai runtime report"
           }
         ]
       }
@@ -27,8 +27,8 @@
         "hooks": [
           {
             "type": "command",
-            "command": "npx -y @evalon-ai/agent-hook@1.0.3 --runner codex",
-            "statusMessage": "Evalon runtime report"
+            "command": "npx -y @ev-ai/agent-hook@1.0.9 --runner codex",
+            "statusMessage": "ev-ai runtime report"
           }
         ]
       }
@@ -38,8 +38,8 @@
         "hooks": [
           {
             "type": "command",
-            "command": "npx -y @evalon-ai/agent-hook@1.0.3 --runner codex",
-            "statusMessage": "Evalon runtime report"
+            "command": "npx -y @ev-ai/agent-hook@1.0.9 --runner codex",
+            "statusMessage": "ev-ai runtime report"
           }
         ]
       }
@@ -49,8 +49,8 @@
         "hooks": [
           {
             "type": "command",
-            "command": "npx -y @evalon-ai/agent-hook@1.0.3 --runner codex",
-            "statusMessage": "Evalon runtime report"
+            "command": "npx -y @ev-ai/agent-hook@1.0.9 --runner codex",
+            "statusMessage": "ev-ai runtime report"
           }
         ]
       }

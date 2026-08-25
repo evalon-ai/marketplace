@@ -2,42 +2,67 @@
   "hooks": {
     "sessionStart": [
       {
-        "command": "npx -y @evalon-ai/agent-hook@1.0.3 --runner cursor"
+        "command": "npx -y @ev-ai/agent-hook@1.0.9 --runner cursor"
       }
     ],
     "beforeSubmitPrompt": [
       {
-        "command": "npx -y @evalon-ai/agent-hook@1.0.3 --runner cursor"
+        "command": "npx -y @ev-ai/agent-hook@1.0.9 --runner cursor"
       }
     ],
     "preToolUse": [
       {
-        "command": "npx -y @evalon-ai/agent-hook@1.0.3 --runner cursor"
+        "command": "npx -y @ev-ai/agent-hook@1.0.9 --runner cursor"
       }
     ],
     "postToolUse": [
       {
-        "command": "npx -y @evalon-ai/agent-hook@1.0.3 --runner cursor"
+        "command": "npx -y @ev-ai/agent-hook@1.0.9 --runner cursor"
       }
     ],
     "postToolUseFailure": [
       {
-        "command": "npx -y @evalon-ai/agent-hook@1.0.3 --runner cursor"
+        "command": "npx -y @ev-ai/agent-hook@1.0.9 --runner cursor"
       }
     ],
     "subagentStart": [
       {
-        "command": "npx -y @evalon-ai/agent-hook@1.0.3 --runner cursor"
+        "command": "npx -y @ev-ai/agent-hook@1.0.9 --runner cursor"
       }
     ],
     "subagentStop": [
       {
-        "command": "npx -y @evalon-ai/agent-hook@1.0.3 --runner cursor"
+        "command": "npx -y @ev-ai/agent-hook@1.0.9 --runner cursor"
       }
     ],
     "stop": [
       {
-        "command": "npx -y @evalon-ai/agent-hook@1.0.3 --runner cursor"
+        "command": "npx -y @ev-ai/agent-hook@1.0.9 --runner cursor"
+      }
+    ],
+    "beforeShellExecution": [
+      {
+        "command": "npx -y @ev-ai/agent-hook@1.0.9 --runner cursor"
+      }
+    ],
+    "afterShellExecution": [
+      {
+        "command": "npx -y @ev-ai/agent-hook@1.0.9 --runner cursor"
+      }
+    ],
+    "beforeReadFile": [
+      {
+        "command": "npx -y @ev-ai/agent-hook@1.0.9 --runner cursor"
+      }
+    ],
+    "afterFileEdit": [
+      {
+        "command": "npx -y @ev-ai/agent-hook@1.0.9 --runner cursor"
+      }
+    ],
+    "beforeMCPExecution": [
+      {
+        "command": "npx -y @ev-ai/agent-hook@1.0.9 --runner cursor"
       }
     ]
   }

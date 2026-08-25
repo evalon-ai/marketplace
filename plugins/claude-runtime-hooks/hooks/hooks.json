@@ -5,7 +5,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "npx -y @evalon-ai/agent-hook@1.0.3 --runner claude"
+            "command": "npx -y @ev-ai/agent-hook@1.0.9 --runner claude"
           }
         ]
       }
@@ -15,7 +15,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "npx -y @evalon-ai/agent-hook@1.0.3 --runner claude"
+            "command": "npx -y @ev-ai/agent-hook@1.0.9 --runner claude"
           }
         ]
       }
@@ -25,7 +25,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "npx -y @evalon-ai/agent-hook@1.0.3 --runner claude"
+            "command": "npx -y @ev-ai/agent-hook@1.0.9 --runner claude"
           }
         ]
       }
@@ -35,7 +35,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "npx -y @evalon-ai/agent-hook@1.0.3 --runner claude"
+            "command": "npx -y @ev-ai/agent-hook@1.0.9 --runner claude"
           }
         ]
       }
@@ -45,7 +45,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "npx -y @evalon-ai/agent-hook@1.0.3 --runner claude"
+            "command": "npx -y @ev-ai/agent-hook@1.0.9 --runner claude"
           }
         ]
       }
@@ -55,7 +55,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "npx -y @evalon-ai/agent-hook@1.0.3 --runner claude"
+            "command": "npx -y @ev-ai/agent-hook@1.0.9 --runner claude"
           }
         ]
       }
@@ -65,7 +65,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "npx -y @evalon-ai/agent-hook@1.0.3 --runner claude"
+            "command": "npx -y @ev-ai/agent-hook@1.0.9 --runner claude"
           }
         ]
       }
@@ -75,7 +75,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "npx -y @evalon-ai/agent-hook@1.0.3 --runner claude"
+            "command": "npx -y @ev-ai/agent-hook@1.0.9 --runner claude"
           }
         ]
       }
@@ -85,7 +85,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "npx -y @evalon-ai/agent-hook@1.0.3 --runner claude"
+            "command": "npx -y @ev-ai/agent-hook@1.0.9 --runner claude"
           }
         ]
       }
@@ -95,7 +95,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "npx -y @evalon-ai/agent-hook@1.0.3 --runner claude"
+            "command": "npx -y @ev-ai/agent-hook@1.0.9 --runner claude"
           }
         ]
       }
@@ -105,7 +105,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "npx -y @evalon-ai/agent-hook@1.0.3 --runner claude"
+            "command": "npx -y @ev-ai/agent-hook@1.0.9 --runner claude"
           }
         ]
       }

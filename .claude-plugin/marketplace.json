@@ -1,9 +1,9 @@
 {
-  "name": "evalon-hooks",
-  "description": "Evalon runtime telemetry hooks for Claude Code, Cursor, and Codex.",
+  "name": "ev-ai-agent-hooks",
+  "description": "Runtime telemetry hooks for Claude Code, Cursor, and Codex.",
   "owner": {
-    "name": "Evalon",
-    "email": "platform@evalon.ai"
+    "name": "Ev-ai",
+    "email": "platform@ev.ai"
   },
   "metadata": {
     "pluginRoot": "./plugins"
@@ -12,7 +12,7 @@
     {
       "name": "claude-runtime-hooks",
       "source": "claude-runtime-hooks",
-      "description": "Evalon runtime telemetry hooks for Claude Code (observe-only, fail-open)."
+      "description": "Runtime telemetry hooks for Claude Code (observe-only, fail-open)."
     }
   ]
 }
