@@ -2,7 +2,7 @@
   "name": "ev-ai-agent-hooks",
   "description": "Runtime telemetry hooks for Claude Code, Cursor, and Codex.",
   "owner": {
-    "name": "Ev-ai",
+    "name": "ev-ai",
     "email": "platform@ev.ai"
   },
   "metadata": {

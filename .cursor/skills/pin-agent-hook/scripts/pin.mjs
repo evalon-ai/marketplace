@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * Pin @evalon-ai/agent-hook and set plugin build versions to the same semver.
+ * Pin @ev-ai/agent-hook and set plugin build versions to the same semver.
  * Usage: node pin.mjs <version>
  * Does not prompt — caller must confirm before running.
  */
@@ -9,7 +9,7 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "../../../..");
-const pkgRe = /@evalon-ai\/agent-hook@\d+\.\d+\.\d+/g;
+const pkgRe = /@ev-ai\/agent-hook@\d+\.\d+\.\d+/g;
 const semver = /^\d+\.\d+\.\d+$/;
 
 const [, , version] = process.argv;
@@ -18,7 +18,7 @@ if (!semver.test(version || "")) {
   process.exit(1);
 }
 
-const pin = `@evalon-ai/agent-hook@${version}`;
+const pin = `@ev-ai/agent-hook@${version}`;
 const files = {
   hooks: [
     "plugins/claude-runtime-hooks/hooks/hooks.json",

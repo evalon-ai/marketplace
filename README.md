@@ -1,10 +1,10 @@
-# Evalon hooks marketplace
+# ev-ai hooks marketplace
 
-Claude Code / Cursor / Codex plugin marketplace for Evalon Layer-3 runtime telemetry.
+Claude Code / Cursor / Codex plugin marketplace for Layer-3 runtime telemetry.
 
-Plugins fire pinned `npx @evalon-ai/agent-hook@… --runner …`. Customer repos enable a plugin and commit a shared `collector_url` manifest — not per-event blocks in runner settings.
+Plugins fire pinned `npx -y @ev-ai/agent-hook@… --runner …` on hook events. Customer repos enable a plugin and commit a shared `collector_url` manifest — not per-event blocks in runner settings.
 
-> Hook package publishes to **GitHub Packages** as **`@evalon-ai/agent-hook`**. Consumer machines need `@evalon-ai:registry=https://npm.pkg.github.com` plus a `read:packages` token in `.npmrc`.
+> Hook package publishes to **GitHub Packages** as **`@ev-ai/agent-hook`**. Consumer machines need `@ev-ai:registry=https://npm.pkg.github.com` plus a `read:packages` token in `.npmrc`.
 
 ## Layout
 
@@ -30,7 +30,7 @@ Commands pin an exact package version (never `@latest`).
 
 ## Install
 
-Replace `<owner>/<repo>` with this GitHub repo (e.g. `evalon-ai/marketplace`).
+Replace `<owner>/<repo>` with this GitHub repo (e.g. `ev-ai/marketplace`).
 
 ### Claude Code
 
@@ -46,7 +46,7 @@ Project `.claude/settings.json`:
 ```json
 {
   "extraKnownMarketplaces": {
-    "evalon-hooks": {
+    "ev-ai-agent-hooks": {
       "source": {
         "source": "github",
         "repo": "<owner>/<repo>"
@@ -54,7 +54,7 @@ Project `.claude/settings.json`:
     }
   },
   "enabledPlugins": {
-    "claude-runtime-hooks@evalon-hooks": true
+    "claude-runtime-hooks@ev-ai-agent-hooks": true
   }
 }
 ```
@@ -62,13 +62,13 @@ Project `.claude/settings.json`:
 Configure collector URL:
 
 ```bash
-npx -y @evalon-ai/agent-hook@1.0.3 configure \
-  --url "https://hooks.evalon.ai/<orgToken>/hook"
+npx -y @ev-ai/agent-hook@1.0.9 configure \
+  --url "https://<collector-host>/<orgToken>/hook"
 ```
 
-Commit `.claude/evalon-runtime-report.json` (`collector_url`).
+Commit the collector manifest (`collector_url`).
 
-`enabledPlugins` without `extraKnownMarketplaces` only works on a machine that already ran `claude plugin marketplace add` — other clones will not know `evalon-hooks`.
+`enabledPlugins` without `extraKnownMarketplaces` only works on a machine that already ran `claude plugin marketplace add` — other clones will not know `ev-ai-agent-hooks`.
 
 ### Cursor
 
@@ -87,7 +87,7 @@ Restart runners; confirm events in the collector.
 If the repo already used file-wiring install, migrate first:
 
 ```bash
-npx -y @evalon-ai/agent-hook@1.0.3 migrate-to-plugin
+npx -y @ev-ai/agent-hook@1.0.9 migrate-to-plugin
 ```
 
-Do **not** also keep Evalon per-event blocks in runner settings — that double-POSTs.
+Do **not** also keep per-event blocks in runner settings — that double-POSTs.

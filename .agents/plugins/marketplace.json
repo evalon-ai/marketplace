@@ -1,7 +1,7 @@
 {
-  "name": "evalon-hooks",
+  "name": "ev-ai-agent-hooks",
   "interface": {
-    "displayName": "Evalon Hooks"
+    "displayName": "ev-ai Hooks"
   },
   "plugins": [
     {

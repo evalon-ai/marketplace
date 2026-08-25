@@ -1,13 +1,13 @@
 {
   "name": "cursor-runtime-hooks",
   "version": "1.0.3",
-  "description": "Evalon Layer-3 runtime telemetry hooks (observe-only, fail-open).",
+  "description": "Layer-3 runtime telemetry hooks (observe-only, fail-open).",
   "author": {
-    "name": "Evalon Platform",
-    "email": "platform@evalon.ai"
+    "name": "ev-ai",
+    "email": "platform@ev.ai"
   },
   "keywords": [
-    "evalon",
+    "ev-ai",
     "runtime",
     "telemetry",
     "hooks"
