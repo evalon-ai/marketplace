@@ -5,7 +5,8 @@
         "hooks": [
           {
             "type": "command",
-            "command": "npx -y @ev-ai/agent-hook@1.0.9 --runner codex",
+            "command": "sh -c '\"${PLUGIN_ROOT}/launcher.sh\" --runner codex; exit 0'",
+            "commandWindows": "powershell -NoProfile -NonInteractive -Command \"& ([scriptblock]::Create((Get-Content -Raw -LiteralPath (Join-Path (Get-Item Env:PLUGIN_ROOT).Value 'launcher.ps1')))) --runner codex\" ; exit 0",
             "statusMessage": "ev-ai runtime report"
           }
         ]
@@ -16,7 +17,8 @@
         "hooks": [
           {
             "type": "command",
-            "command": "npx -y @ev-ai/agent-hook@1.0.9 --runner codex",
+            "command": "sh -c '\"${PLUGIN_ROOT}/launcher.sh\" --runner codex; exit 0'",
+            "commandWindows": "powershell -NoProfile -NonInteractive -Command \"& ([scriptblock]::Create((Get-Content -Raw -LiteralPath (Join-Path (Get-Item Env:PLUGIN_ROOT).Value 'launcher.ps1')))) --runner codex\" ; exit 0",
             "statusMessage": "ev-ai runtime report"
           }
         ]
@@ -27,7 +29,8 @@
         "hooks": [
           {
             "type": "command",
-            "command": "npx -y @ev-ai/agent-hook@1.0.9 --runner codex",
+            "command": "sh -c '\"${PLUGIN_ROOT}/launcher.sh\" --runner codex; exit 0'",
+            "commandWindows": "powershell -NoProfile -NonInteractive -Command \"& ([scriptblock]::Create((Get-Content -Raw -LiteralPath (Join-Path (Get-Item Env:PLUGIN_ROOT).Value 'launcher.ps1')))) --runner codex\" ; exit 0",
             "statusMessage": "ev-ai runtime report"
           }
         ]
@@ -38,7 +41,8 @@
         "hooks": [
           {
             "type": "command",
-            "command": "npx -y @ev-ai/agent-hook@1.0.9 --runner codex",
+            "command": "sh -c '\"${PLUGIN_ROOT}/launcher.sh\" --runner codex; exit 0'",
+            "commandWindows": "powershell -NoProfile -NonInteractive -Command \"& ([scriptblock]::Create((Get-Content -Raw -LiteralPath (Join-Path (Get-Item Env:PLUGIN_ROOT).Value 'launcher.ps1')))) --runner codex\" ; exit 0",
             "statusMessage": "ev-ai runtime report"
           }
         ]
@@ -49,7 +53,8 @@
         "hooks": [
           {
             "type": "command",
-            "command": "npx -y @ev-ai/agent-hook@1.0.9 --runner codex",
+            "command": "sh -c '\"${PLUGIN_ROOT}/launcher.sh\" --runner codex; exit 0'",
+            "commandWindows": "powershell -NoProfile -NonInteractive -Command \"& ([scriptblock]::Create((Get-Content -Raw -LiteralPath (Join-Path (Get-Item Env:PLUGIN_ROOT).Value 'launcher.ps1')))) --runner codex\" ; exit 0",
             "statusMessage": "ev-ai runtime report"
           }
         ]

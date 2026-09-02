@@ -2,67 +2,90 @@
   "hooks": {
     "sessionStart": [
       {
-        "command": "npx -y @ev-ai/agent-hook@1.0.9 --runner cursor"
+        "command": "\"${CURSOR_PLUGIN_ROOT}/launcher.sh\" --runner cursor ; exit 0"
+      },
+      {
+        "command": "powershell -NoProfile -NonInteractive -Command \"& ([scriptblock]::Create((Get-Content -Raw -LiteralPath (Join-Path (Get-Item Env:CURSOR_PLUGIN_ROOT).Value 'launcher.ps1')))) --runner cursor\" ; exit 0"
       }
     ],
     "beforeSubmitPrompt": [
       {
-        "command": "npx -y @ev-ai/agent-hook@1.0.9 --runner cursor"
+        "command": "\"${CURSOR_PLUGIN_ROOT}/launcher.sh\" --runner cursor ; exit 0"
+      },
+      {
+        "command": "powershell -NoProfile -NonInteractive -Command \"& ([scriptblock]::Create((Get-Content -Raw -LiteralPath (Join-Path (Get-Item Env:CURSOR_PLUGIN_ROOT).Value 'launcher.ps1')))) --runner cursor\" ; exit 0"
       }
     ],
     "preToolUse": [
       {
-        "command": "npx -y @ev-ai/agent-hook@1.0.9 --runner cursor"
+        "command": "\"${CURSOR_PLUGIN_ROOT}/launcher.sh\" --runner cursor ; exit 0"
+      },
+      {
+        "command": "powershell -NoProfile -NonInteractive -Command \"& ([scriptblock]::Create((Get-Content -Raw -LiteralPath (Join-Path (Get-Item Env:CURSOR_PLUGIN_ROOT).Value 'launcher.ps1')))) --runner cursor\" ; exit 0"
       }
     ],
     "postToolUse": [
       {
-        "command": "npx -y @ev-ai/agent-hook@1.0.9 --runner cursor"
+        "command": "\"${CURSOR_PLUGIN_ROOT}/launcher.sh\" --runner cursor ; exit 0"
+      },
+      {
+        "command": "powershell -NoProfile -NonInteractive -Command \"& ([scriptblock]::Create((Get-Content -Raw -LiteralPath (Join-Path (Get-Item Env:CURSOR_PLUGIN_ROOT).Value 'launcher.ps1')))) --runner cursor\" ; exit 0"
       }
     ],
     "postToolUseFailure": [
       {
-        "command": "npx -y @ev-ai/agent-hook@1.0.9 --runner cursor"
-      }
-    ],
-    "subagentStart": [
+        "command": "\"${CURSOR_PLUGIN_ROOT}/launcher.sh\" --runner cursor ; exit 0"
+      },
       {
-        "command": "npx -y @ev-ai/agent-hook@1.0.9 --runner cursor"
-      }
-    ],
-    "subagentStop": [
-      {
-        "command": "npx -y @ev-ai/agent-hook@1.0.9 --runner cursor"
-      }
-    ],
-    "stop": [
-      {
-        "command": "npx -y @ev-ai/agent-hook@1.0.9 --runner cursor"
+        "command": "powershell -NoProfile -NonInteractive -Command \"& ([scriptblock]::Create((Get-Content -Raw -LiteralPath (Join-Path (Get-Item Env:CURSOR_PLUGIN_ROOT).Value 'launcher.ps1')))) --runner cursor\" ; exit 0"
       }
     ],
     "beforeShellExecution": [
       {
-        "command": "npx -y @ev-ai/agent-hook@1.0.9 --runner cursor"
-      }
-    ],
-    "afterShellExecution": [
+        "command": "\"${CURSOR_PLUGIN_ROOT}/launcher.sh\" --runner cursor ; exit 0"
+      },
       {
-        "command": "npx -y @ev-ai/agent-hook@1.0.9 --runner cursor"
+        "command": "powershell -NoProfile -NonInteractive -Command \"& ([scriptblock]::Create((Get-Content -Raw -LiteralPath (Join-Path (Get-Item Env:CURSOR_PLUGIN_ROOT).Value 'launcher.ps1')))) --runner cursor\" ; exit 0"
       }
     ],
     "beforeReadFile": [
       {
-        "command": "npx -y @ev-ai/agent-hook@1.0.9 --runner cursor"
-      }
-    ],
-    "afterFileEdit": [
+        "command": "\"${CURSOR_PLUGIN_ROOT}/launcher.sh\" --runner cursor ; exit 0"
+      },
       {
-        "command": "npx -y @ev-ai/agent-hook@1.0.9 --runner cursor"
+        "command": "powershell -NoProfile -NonInteractive -Command \"& ([scriptblock]::Create((Get-Content -Raw -LiteralPath (Join-Path (Get-Item Env:CURSOR_PLUGIN_ROOT).Value 'launcher.ps1')))) --runner cursor\" ; exit 0"
       }
     ],
     "beforeMCPExecution": [
       {
-        "command": "npx -y @ev-ai/agent-hook@1.0.9 --runner cursor"
+        "command": "\"${CURSOR_PLUGIN_ROOT}/launcher.sh\" --runner cursor ; exit 0"
+      },
+      {
+        "command": "powershell -NoProfile -NonInteractive -Command \"& ([scriptblock]::Create((Get-Content -Raw -LiteralPath (Join-Path (Get-Item Env:CURSOR_PLUGIN_ROOT).Value 'launcher.ps1')))) --runner cursor\" ; exit 0"
+      }
+    ],
+    "subagentStart": [
+      {
+        "command": "\"${CURSOR_PLUGIN_ROOT}/launcher.sh\" --runner cursor ; exit 0"
+      },
+      {
+        "command": "powershell -NoProfile -NonInteractive -Command \"& ([scriptblock]::Create((Get-Content -Raw -LiteralPath (Join-Path (Get-Item Env:CURSOR_PLUGIN_ROOT).Value 'launcher.ps1')))) --runner cursor\" ; exit 0"
+      }
+    ],
+    "subagentStop": [
+      {
+        "command": "\"${CURSOR_PLUGIN_ROOT}/launcher.sh\" --runner cursor ; exit 0"
+      },
+      {
+        "command": "powershell -NoProfile -NonInteractive -Command \"& ([scriptblock]::Create((Get-Content -Raw -LiteralPath (Join-Path (Get-Item Env:CURSOR_PLUGIN_ROOT).Value 'launcher.ps1')))) --runner cursor\" ; exit 0"
+      }
+    ],
+    "stop": [
+      {
+        "command": "\"${CURSOR_PLUGIN_ROOT}/launcher.sh\" --runner cursor ; exit 0"
+      },
+      {
+        "command": "powershell -NoProfile -NonInteractive -Command \"& ([scriptblock]::Create((Get-Content -Raw -LiteralPath (Join-Path (Get-Item Env:CURSOR_PLUGIN_ROOT).Value 'launcher.ps1')))) --runner cursor\" ; exit 0"
       }
     ]
   }
