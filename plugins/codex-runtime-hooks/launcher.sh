@@ -184,6 +184,7 @@ case "$RUNTIME" in
   node|binary) ;;
   *) RUNTIME="" ;;
 esac
+CACHED="$RUNTIME"
 
 probe() {
   if [ -n "$HOOK" ] && command -v node >/dev/null 2>&1; then
@@ -208,19 +209,40 @@ if [ -z "$RUNTIME" ]; then
   fi
 fi
 
-case "$RUNTIME" in
-  node)
-    [ -n "$HOOK" ] || fail_open
-    exec node "$HOOK" "$@" || fail_open
-    ;;
-  binary)
-    [ -n "$BINARY" ] && exec "$BINARY" "$@"
-    # Cached verdict with nothing on disk — re-fetch, fail open meanwhile.
-    maybe_spawn_fetch
-    fail_open
-    ;;
-  *)
-    maybe_spawn_fetch
-    fail_open
-    ;;
-esac
+# Exec the runtime this verdict names, or return non-zero *without* exec'ing when
+# it is not actually usable. The check has to happen before `exec`: a failed
+# `exec` exits the shell outright, so `exec node … || fail_open` never runs its
+# fallback and leaks 127 to the runner instead of `{"continue":true}`.
+try_dispatch() {
+  case "$RUNTIME" in
+    node)
+      [ -n "$HOOK" ] || return 1
+      command -v node >/dev/null 2>&1 || return 1
+      exec node "$HOOK" "$@"
+      ;;
+    binary)
+      [ -n "$BINARY" ] || return 1
+      [ -x "$BINARY" ] || return 1
+      exec "$BINARY" "$@"
+      ;;
+  esac
+  return 1
+}
+
+try_dispatch "$@"
+
+# The cached verdict did not survive contact: the runtime it names is gone, or
+# this process has a different PATH than the one that wrote it (a GUI-launched
+# IDE does not inherit a login shell's PATH). Drop it and probe again — once.
+if [ -n "$CACHED" ]; then
+  rm -f "$CACHE_FILE" 2>/dev/null || true
+  RUNTIME="$(probe)"
+  if [ "$RUNTIME" != "none" ]; then
+    mkdir -p "$CACHE_DIR" 2>/dev/null || true
+    printf '%s\n' "$RUNTIME" > "$CACHE_FILE" 2>/dev/null || true
+  fi
+  try_dispatch "$@"
+fi
+
+maybe_spawn_fetch
+fail_open

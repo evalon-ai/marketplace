@@ -7,6 +7,10 @@
 # Reads plugin root from the environment; does not trust runner substitution.
 $ErrorActionPreference = 'SilentlyContinue'
 
+# Capture the script's own arguments: inside a function `$args` rebinds to that
+# function's parameters, so the runner's `--runner <platform>` would be lost.
+$hookArgs = $args
+
 function Fail-Open {
   Write-Output '{"continue":true}'
   exit 0
@@ -195,6 +199,7 @@ if (Test-Path -LiteralPath $cacheFile -PathType Leaf) {
 # older payload) rather than treating it as a miss — a stale token must re-probe,
 # not fall through to the fetch on a machine that has Node.
 if ($runtime -ne 'node' -and $runtime -ne 'binary') { $runtime = $null }
+$cached = $runtime
 
 function Probe-Runtime {
   if ($hook -and (Get-Command node -ErrorAction SilentlyContinue)) { return 'node' }
@@ -213,24 +218,44 @@ if (-not $runtime) {
   }
 }
 
-switch ($runtime) {
-  'node' {
-    if (-not $hook) { Fail-Open }
-    & node $hook @args
-    if ($LASTEXITCODE -ne 0) { Fail-Open }
-  }
-  'binary' {
-    if ($binary) {
-      & $binary @args
+# Run the runtime this verdict names, or report back that it is not usable so the
+# caller can re-probe. Availability is checked before invoking, not after: with
+# $ErrorActionPreference silenced, a missing command leaves $LASTEXITCODE holding
+# a stale value, so an after-the-fact check cannot tell success from absence.
+function Invoke-Runtime {
+  switch ($runtime) {
+    'node' {
+      if (-not $hook) { return $false }
+      if (-not (Get-Command node -ErrorAction SilentlyContinue)) { return $false }
+      & node $hook @hookArgs
       if ($LASTEXITCODE -ne 0) { Fail-Open }
-    } else {
-      # Cached verdict with nothing on disk — re-fetch, fail open meanwhile.
-      Start-BinaryFetch
-      Fail-Open
+      return $true
+    }
+    'binary' {
+      if (-not $binary) { return $false }
+      if (-not (Test-Path -LiteralPath $binary -PathType Leaf)) { return $false }
+      & $binary @hookArgs
+      if ($LASTEXITCODE -ne 0) { Fail-Open }
+      return $true
     }
   }
-  default {
-    Start-BinaryFetch
-    Fail-Open
-  }
+  return $false
 }
+
+if (Invoke-Runtime) { exit 0 }
+
+# The cached verdict did not survive contact: the runtime it names is gone, or
+# this process has a different PATH than the one that wrote it (a GUI-launched
+# IDE does not inherit a login shell's PATH). Drop it and probe again — once.
+if ($cached) {
+  Remove-Item -LiteralPath $cacheFile -Force -ErrorAction SilentlyContinue
+  $runtime = Probe-Runtime
+  if ($runtime -ne 'none') {
+    New-Item -ItemType Directory -Force -Path $cacheDir | Out-Null
+    Set-Content -LiteralPath $cacheFile -Value $runtime -NoNewline
+  }
+  if (Invoke-Runtime) { exit 0 }
+}
+
+Start-BinaryFetch
+Fail-Open
