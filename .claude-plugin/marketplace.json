@@ -5,13 +5,10 @@
     "name": "ev-ai",
     "email": "platform@ev.ai"
   },
-  "metadata": {
-    "pluginRoot": "./plugins"
-  },
   "plugins": [
     {
       "name": "ev-ai-agent-hooks",
-      "source": "claude",
+      "source": "./plugins/claude",
       "description": "Runtime telemetry hooks for Claude Code (observe-only, fail-open)."
     }
   ]
