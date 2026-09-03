@@ -4,7 +4,9 @@ Claude Code / Cursor / Codex plugin marketplace for Layer-3 runtime telemetry.
 
 Each plugin ships its own runtime: `hook.mjs` plus a `sh` + PowerShell launcher pair at the plugin root. `hooks.json` invokes the launcher, the launcher resolves the plugin root from its own environment, probes once for a usable runtime, caches the verdict at `~/.ev-ai/runtime`, and execs the payload. Customer repos enable a plugin and commit a shared `collector_url` manifest — not per-event blocks in runner settings.
 
-> Hook package publishes to the **public npm registry** as **`@ev-ai/agent-hook`**. Consumers need no `.npmrc` and no token. The launcher's `npx` fallback only fires on a machine with no `node` on PATH.
+On a machine with no Node at all, the launcher fetches the Bun-compiled binary from the CDN in the background, verifies it against `SHA256SUMS`, and uses it from the next event onward. Nothing blocks on the download, and there is no `npx` branch — `npx` requires Node, so it could never serve the machine a fallback is for.
+
+> **A plugin hook never reaches the npm registry.** The runtime is either `hook.mjs` from the payload or the CDN binary, resolved at the payload's own `version`, so a plugin never runs a runtime newer than the event map it shipped with. The package still publishes publicly as **`@ev-ai/agent-hook`** for `configure` / `migrate-to-plugin` and for repos on file-wiring; consumers need no `.npmrc` and no token.
 
 ## Layout
 
@@ -19,12 +21,16 @@ Each plugin ships its own runtime: `hook.mjs` plus a `sh` + PowerShell launcher 
     │   ├── hooks/hooks.json          # event map — invokes ./launcher.sh / ./launcher.ps1
     │   ├── hook.mjs                  # runtime payload (bundled, zero-dependency)
     │   ├── launcher.sh               # POSIX launcher
-    │   └── launcher.ps1              # PowerShell 5.1 launcher
-    ├── cursor-runtime-hooks/         # Cursor — same four files
-    └── codex-runtime-hooks/          # OpenAI Codex — same four files
+    │   ├── launcher.ps1              # PowerShell 5.1 launcher
+    │   ├── version                   # payload version — pins both fallbacks
+    │   └── SHA256SUMS                # checksums for the 6 CDN binaries
+    ├── cursor-runtime-hooks/         # Cursor — same six files
+    └── codex-runtime-hooks/          # OpenAI Codex — same six files
 ```
 
-`hook.mjs`, `launcher.sh` and `launcher.ps1` are **generated** — never hand-edit them here. They are copied from `packages/agent-hook` in the monorepo by `sync:hooks` (see [Releasing](#releasing)).
+Every file above except `plugin.json` is **generated** — never hand-edit them here. They are copied from (or stamped by) `packages/agent-hook` in the monorepo via `sync:hooks` (see [Releasing](#releasing)).
+
+`version` carries the package version in the *payload* rather than in a hook command, which is what lets a bump pin the fallbacks without rewriting `hooks.json`. `SHA256SUMS` makes this repo the trust anchor for the on-demand binary download; if a release ships without it, the launcher verifies against the CDN's own copy instead.
 
 ## Plugins
 
@@ -40,11 +46,14 @@ Each plugin ships its own runtime: `hook.mjs` plus a `sh` + PowerShell launcher 
 runner event
   → launcher (resolves plugin root, ~9 ms)
     → ~/.ev-ai/runtime cached verdict?
-        node  → node hook.mjs                     ~40 ms to ack
-        npx   → npx -y --prefer-offline @ev-ai/agent-hook   (no node on PATH)
-        none  → {"continue":true}, nothing POSTs
+        node   → node hook.mjs                            ~40 ms to ack
+        binary → ~/.ev-ai/agent-hook/<version>/ev-ai-agent-hook   ~23 ms to ack
+        none   → {"continue":true} now, and a detached CDN fetch of the
+                 binary (verified against SHA256SUMS) for the next event
   → ack; collect + POST continue detached
 ```
+
+The `none` verdict is deliberately **not** cached — it is the one verdict a background fetch can change. The fetch is rate-limited by the mtime of `~/.ev-ai/agent-hook/.fetch-stamp` (6 h default, `EV_AI_BINARY_FETCH_TTL_MIN`) and disabled entirely by `EV_AI_BINARY_FETCH=0`.
 
 **No package version appears in any hook command.** A runtime bump changes `hook.mjs`, not `hooks.json` — so it re-prompts nobody. That matters most on Codex, which trusts a hash of the hook definition and un-trusts it on every change.
 
@@ -132,7 +141,15 @@ yarn workspace @ev-ai/agent-hook build
 yarn workspace @ev-ai/agent-hook sync:hooks -- /path/to/marketplace
 ```
 
-That copies `hook.mjs` + both launchers into all three plugin trees and rewrites every `hooks/hooks.json`. Then set the plugin manifest versions to the package version here:
+That copies `hook.mjs` + both launchers into all three plugin trees, stamps `version`, and rewrites every `hooks/hooks.json`.
+
+To also anchor the binary download to this repo, cross-compile first — `yarn workspace @ev-ai/agent-hook build:hook-binary` — and `sync:hooks` picks up the generated `SHA256SUMS`. The six binaries themselves go to the CDN, never into this repo:
+
+```bash
+aws s3 sync packages/agent-hook/compile-out/bin s3://ev-ai-agent-hook/<X.Y.Z>/
+```
+
+Then set the plugin manifest versions to the package version here:
 
 ```bash
 /pin-agent-hook <X.Y.Z>

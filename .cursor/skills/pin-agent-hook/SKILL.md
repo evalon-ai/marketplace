@@ -2,9 +2,9 @@
 name: pin-agent-hook
 description: >-
   Set every marketplace plugin.json version to one semver and verify the shipped
-  launcher payload (hook.mjs + launcher.sh + launcher.ps1) is intact. Use when the
-  user runs /pin-agent-hook or asks to bump/pin the agent-hook plugin version in
-  this marketplace repo.
+  launcher payload (hook.mjs + launcher.sh + launcher.ps1 + version + SHA256SUMS)
+  is intact. Use when the user runs /pin-agent-hook or asks to bump/pin the
+  agent-hook plugin version in this marketplace repo.
 disable-model-invocation: true
 ---
 
@@ -18,18 +18,23 @@ Plugin build version **always equals** npm package version. One semver. No separ
 
 **Hook commands carry no version.** `hooks.json` invokes `launcher.sh` / `launcher.ps1` at a constant path inside the plugin; runtime bumps ride `hook.mjs`. Keeping the hook definition byte-stable across releases is the point of this delivery shape — Codex trusts a hash of the definition and un-trusts it on every change. Do **not** reintroduce `npx …@X.Y.Z` into any `hooks.json`.
 
+The version the launcher actually reads lives in the **payload** — `plugins/*/version` — where it costs no re-approval. It resolves the binary CDN path, so it must equal the pinned manifest version; the script refuses to write if it does not. The launcher has no `npx` branch at all: plugin delivery never touches the registry at fire time, and the README's `npx` examples are `configure` / `migrate-to-plugin` only.
+
 Scope, package owner, and marketplace `owner.name` are **ev-ai**. Package is **`@ev-ai/agent-hook`**. Use that name only.
 
 ## Generated files — do not hand-edit
 
-`hook.mjs`, `launcher.sh`, `launcher.ps1` and all three `hooks/hooks.json` come from `packages/agent-hook` in the monorepo:
+`hook.mjs`, `launcher.sh`, `launcher.ps1`, `version`, `SHA256SUMS` and all three `hooks/hooks.json` come from `packages/agent-hook` in the monorepo:
 
 ```bash
 yarn workspace @ev-ai/agent-hook build
+yarn workspace @ev-ai/agent-hook build:hook-binary   # optional — produces SHA256SUMS
 yarn workspace @ev-ai/agent-hook sync:hooks -- /path/to/marketplace
 ```
 
 Run that **before** this skill whenever the payload or the event maps changed. This skill verifies the result; it does not produce it.
+
+`SHA256SUMS` is optional and anchors the launcher's on-demand binary download to this repo. Without it the launcher verifies against the CDN's own copy — weaker, still verified. Its absence is a `note:`, not a failure.
 
 ## Files
 
@@ -39,6 +44,8 @@ Run that **before** this skill whenever the payload or the event maps changed. T
 | | `plugins/cursor-runtime-hooks/.cursor-plugin/plugin.json` |
 | | `plugins/codex-runtime-hooks/.codex-plugin/plugin.json` |
 | Verified, never written here | `plugins/*/hook.mjs`, `plugins/*/launcher.sh`, `plugins/*/launcher.ps1` |
+| | `plugins/*/version` (must equal the pinned version) |
+| | `plugins/*/SHA256SUMS` (optional; 6 platform entries when present) |
 | | `plugins/*/hooks/hooks.json` (must invoke the launcher, must not contain `npx`) |
 | Docs | `README.md` (`npx -y @ev-ai/agent-hook@…` **configure / migrate** examples only) |
 
@@ -69,6 +76,7 @@ Discover current state:
 rg '"version":' plugins/*/.*/plugin.json
 rg -l 'npx' plugins/*/hooks/hooks.json            # expect: no matches
 ls plugins/*/hook.mjs plugins/*/launcher.sh plugins/*/launcher.ps1
+tail -n +1 plugins/*/version                      # expect: the version being pinned
 ```
 
 Reject if the new version equals the current plugin version (unless the user forces with `--force`).
@@ -83,7 +91,8 @@ Show plan:
 Pin plugin build version (= @ev-ai/agent-hook package)
   plugins/*/plugin.json:  <old> → <new>
   README:                 update configure example pins to <new>
-  payload:                verify hook.mjs + launcher.sh + launcher.ps1 in all three plugins
+  payload:                verify hook.mjs + launcher.sh + launcher.ps1 + version in all three plugins
+                          (version must already read <new> — sync:hooks stamps it)
 ```
 
 Ask for confirmation. Prefer `AskQuestion` single-select:
@@ -101,7 +110,7 @@ Only after confirm, run:
 node .cursor/skills/pin-agent-hook/scripts/pin.mjs <version>
 ```
 
-It fails loudly (before writing anything) if a payload file is missing or a `hooks.json` still wires `npx`. In that case run `sync:hooks` from the monorepo and retry.
+It fails loudly (before writing anything) if a payload file is missing, a `plugins/*/version` disagrees with the version being pinned, or a `hooks.json` still wires `npx`. In every case the fix is `sync:hooks` from a monorepo at that version, then retry.
 
 Do not commit unless the user asks.
 
@@ -111,6 +120,7 @@ Do not commit unless the user asks.
 rg '"version":' plugins/*/.*/plugin.json
 rg -o '@ev-ai/agent-hook@[0-9]+\.[0-9]+\.[0-9]+' README.md | sort -u
 rg -o 'launcher\.(sh|ps1)' plugins/*/hooks/hooks.json | sort -u
+git diff --stat -- 'plugins/*/hooks/hooks.json'   # expect: empty on a pure runtime bump
 ```
 
-Expect one version (`NEW`) across all three `plugin.json` and the README, every `hooks.json` invoking both launchers, and no `npx` anywhere under `plugins/*/hooks/`. Summarize changed files; stop.
+Expect one version (`NEW`) across all three `plugin.json`, all three `version` files and the README, every `hooks.json` invoking both launchers, and no `npx` anywhere under `plugins/*/hooks/`. A non-empty `hooks.json` diff means the event map changed — say so explicitly, because it re-opens Codex `/hooks` for every developer. Summarize changed files; stop.
