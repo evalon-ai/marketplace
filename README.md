@@ -16,16 +16,16 @@ On a machine with no Node at all, the launcher fetches the Bun-compiled binary f
 ├── .cursor-plugin/marketplace.json   # Cursor marketplace catalog
 ├── .agents/plugins/marketplace.json  # Codex marketplace catalog
 └── plugins/
-    ├── claude-runtime-hooks/         # Claude Code
-    │   ├── .claude-plugin/plugin.json
+    ├── claude/                       # Claude Code
+    │   ├── .claude-plugin/plugin.json   # name: ev-ai-agent-hooks
     │   ├── hooks/hooks.json          # event map — invokes ./launcher.sh / ./launcher.ps1
     │   ├── hook.mjs                  # runtime payload (bundled, zero-dependency)
     │   ├── launcher.sh               # POSIX launcher
     │   ├── launcher.ps1              # PowerShell 5.1 launcher
     │   ├── version                   # payload version — pins both fallbacks
     │   └── SHA256SUMS                # checksums for the 6 CDN binaries
-    ├── cursor-runtime-hooks/         # Cursor — same six files
-    └── codex-runtime-hooks/          # OpenAI Codex — same six files
+    ├── cursor/                       # Cursor — same six files
+    └── codex/                        # OpenAI Codex — same six files
 ```
 
 Every file above except `plugin.json` is **generated** — never hand-edit them here. They are copied from (or stamped by) `packages/agent-hook` in the monorepo via `sync:hooks` (see [Releasing](#releasing)).
@@ -34,11 +34,13 @@ Every file above except `plugin.json` is **generated** — never hand-edit them 
 
 ## Plugins
 
-| Plugin | Runner |
-| --- | --- |
-| `claude-runtime-hooks` | Claude Code |
-| `cursor-runtime-hooks` | Cursor |
-| `codex-runtime-hooks` | OpenAI Codex |
+All three runners install the same plugin name — `ev-ai-agent-hooks@ev-ai-marketplace`. Each runner reads its own marketplace index, and each index lists exactly one plugin, so the runner is implied by the index rather than by the name. The directory under `plugins/` names the runner because the three ship different event maps.
+
+| Runner | Marketplace index | Plugin directory |
+| --- | --- | --- |
+| Claude Code | `.claude-plugin/marketplace.json` | `plugins/claude` |
+| Cursor | `.cursor-plugin/marketplace.json` | `plugins/cursor` |
+| OpenAI Codex | `.agents/plugins/marketplace.json` | `plugins/codex` |
 
 ## How a hook event runs
 
@@ -74,7 +76,7 @@ Replace `<owner>/<repo>` with this GitHub repo (e.g. `ev-ai/marketplace`).
 claude plugin marketplace add <owner>/<repo>
 
 # Install on this machine (enablement alone does not install)
-claude plugin install claude-runtime-hooks@ev-ai-agent-hooks
+claude plugin install ev-ai-agent-hooks@ev-ai-marketplace
 ```
 
 Project `.claude/settings.json` (commit both keys for collaborators):
@@ -82,7 +84,7 @@ Project `.claude/settings.json` (commit both keys for collaborators):
 ```json
 {
   "extraKnownMarketplaces": {
-    "ev-ai-agent-hooks": {
+    "ev-ai-marketplace": {
       "source": {
         "source": "github",
         "repo": "<owner>/<repo>"
@@ -90,7 +92,7 @@ Project `.claude/settings.json` (commit both keys for collaborators):
     }
   },
   "enabledPlugins": {
-    "claude-runtime-hooks@ev-ai-agent-hooks": true
+    "ev-ai-agent-hooks@ev-ai-marketplace": true
   }
 }
 ```
@@ -104,11 +106,11 @@ npx -y @ev-ai/agent-hook@1.1.3 configure \
 
 Commit the collector manifest (`collector_url`).
 
-`enabledPlugins` without `extraKnownMarketplaces` only works on a machine that already ran `claude plugin marketplace add` — other clones will not know `ev-ai-agent-hooks`.
+`enabledPlugins` without `extraKnownMarketplaces` only works on a machine that already ran `claude plugin marketplace add` — other clones will not know `ev-ai-marketplace`.
 
 ### Cursor
 
-Import this repo as a team/user marketplace (or submit via [cursor.com/marketplace/publish](https://cursor.com/marketplace/publish)), then enable `cursor-runtime-hooks`.
+Import this repo as a team/user marketplace (or submit via [cursor.com/marketplace/publish](https://cursor.com/marketplace/publish)), then enable `ev-ai-agent-hooks`.
 
 Configure the same collector manifest as Claude (`configure` above).
 
@@ -116,7 +118,7 @@ Configure the same collector manifest as Claude (`configure` above).
 
 ### Codex
 
-Enable `codex-runtime-hooks` from this marketplace, then trust hooks via `/hooks` — install and enable are not enough, and trust is stored against the hook-definition hash. Managed `[hooks]` (MDM / cloud requirements) is trusted by policy and needs no click.
+Enable `ev-ai-agent-hooks` from this marketplace, then trust hooks via `/hooks` — install and enable are not enough, and trust is stored against the hook-definition hash. Managed `[hooks]` (MDM / cloud requirements) is trusted by policy and needs no click.
 
 > `allow_managed_hooks_only = true` skips plugin hooks entirely. In an org with that set, put ev-ai on the managed `[hooks]` table instead of this marketplace.
 

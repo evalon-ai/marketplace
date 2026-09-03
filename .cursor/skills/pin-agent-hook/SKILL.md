@@ -40,9 +40,10 @@ Run that **before** this skill whenever the payload or the event maps changed. T
 
 | Role | Paths |
 | --- | --- |
-| Build version (= package) | `plugins/claude-runtime-hooks/.claude-plugin/plugin.json` |
-| | `plugins/cursor-runtime-hooks/.cursor-plugin/plugin.json` |
-| | `plugins/codex-runtime-hooks/.codex-plugin/plugin.json` |
+| Build version (= package) | `plugins/claude/.claude-plugin/plugin.json` |
+| | `plugins/cursor/.cursor-plugin/plugin.json` |
+| | `plugins/codex/.codex-plugin/plugin.json` |
+| Verified, never written here | `name` in all three manifests (must be `ev-ai-agent-hooks`) |
 | Verified, never written here | `plugins/*/hook.mjs`, `plugins/*/launcher.sh`, `plugins/*/launcher.ps1` |
 | | `plugins/*/version` (must equal the pinned version) |
 | | `plugins/*/SHA256SUMS` (optional; 6 platform entries when present) |

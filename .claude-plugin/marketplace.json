@@ -1,5 +1,5 @@
 {
-  "name": "ev-ai-agent-hooks",
+  "name": "ev-ai-marketplace",
   "description": "Runtime telemetry hooks for Claude Code, Cursor, and Codex.",
   "owner": {
     "name": "ev-ai",
@@ -10,8 +10,8 @@
   },
   "plugins": [
     {
-      "name": "claude-runtime-hooks",
-      "source": "claude-runtime-hooks",
+      "name": "ev-ai-agent-hooks",
+      "source": "claude",
       "description": "Runtime telemetry hooks for Claude Code (observe-only, fail-open)."
     }
   ]

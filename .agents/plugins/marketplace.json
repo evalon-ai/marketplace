@@ -1,14 +1,14 @@
 {
-  "name": "ev-ai-agent-hooks",
+  "name": "ev-ai-marketplace",
   "interface": {
-    "displayName": "ev-ai Hooks"
+    "displayName": "ev-ai Marketplace"
   },
   "plugins": [
     {
-      "name": "codex-runtime-hooks",
+      "name": "ev-ai-agent-hooks",
       "source": {
         "source": "local",
-        "path": "./plugins/codex-runtime-hooks"
+        "path": "./plugins/codex"
       },
       "policy": {
         "installation": "AVAILABLE",

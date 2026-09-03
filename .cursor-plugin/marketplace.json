@@ -1,5 +1,5 @@
 {
-  "name": "ev-ai-agent-hooks",
+  "name": "ev-ai-marketplace",
   "owner": {
     "name": "ev-ai",
     "email": "platform@ev.ai"
@@ -10,8 +10,8 @@
   },
   "plugins": [
     {
-      "name": "cursor-runtime-hooks",
-      "source": "cursor-runtime-hooks",
+      "name": "ev-ai-agent-hooks",
+      "source": "cursor",
       "description": "Runtime telemetry hooks for Cursor (observe-only, fail-open)."
     }
   ]

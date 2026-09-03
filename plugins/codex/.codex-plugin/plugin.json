@@ -1,5 +1,5 @@
 {
-  "name": "codex-runtime-hooks",
+  "name": "ev-ai-agent-hooks",
   "version": "1.1.3",
   "description": "Layer-3 runtime telemetry hooks (observe-only, fail-open).",
   "author": {
@@ -13,7 +13,7 @@
     "hooks"
   ],
   "interface": {
-    "displayName": "Codex Runtime Hooks",
+    "displayName": "ev-ai Agent Hooks",
     "shortDescription": "Observe-only runtime telemetry hooks for Codex.",
     "longDescription": "Provides Layer-3 runtime telemetry metadata for Codex sessions while keeping execution observe-only and fail-open.",
     "developerName": "ev-ai",
