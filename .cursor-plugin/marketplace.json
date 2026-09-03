@@ -12,7 +12,8 @@
     {
       "name": "ev-ai-agent-hooks",
       "source": "cursor",
-      "description": "Runtime telemetry hooks for Cursor (observe-only, fail-open)."
+      "description": "Runtime telemetry hooks for Cursor (observe-only, fail-open).",
+      "license": "Proprietary"
     }
   ]
 }

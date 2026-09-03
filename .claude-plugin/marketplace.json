@@ -9,7 +9,8 @@
     {
       "name": "ev-ai-agent-hooks",
       "source": "./plugins/claude",
-      "description": "Runtime telemetry hooks for Claude Code (observe-only, fail-open)."
+      "description": "Runtime telemetry hooks for Claude Code (observe-only, fail-open).",
+      "license": "Proprietary"
     }
   ]
 }

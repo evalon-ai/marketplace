@@ -6,6 +6,7 @@
     "name": "ev-ai",
     "email": "platform@ev.ai"
   },
+  "license": "Proprietary",
   "keywords": [
     "ev-ai",
     "runtime",
