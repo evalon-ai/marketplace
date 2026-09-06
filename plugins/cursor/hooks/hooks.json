@@ -1,91 +1,92 @@
 {
+  "version": 1,
   "hooks": {
     "sessionStart": [
       {
-        "command": "\"${CURSOR_PLUGIN_ROOT}/launcher.sh\" --runner cursor ; exit 0"
+        "command": "sh ./launcher.sh --runner cursor"
       },
       {
-        "command": "powershell -NoProfile -NonInteractive -Command \"& ([scriptblock]::Create((Get-Content -Raw -LiteralPath (Join-Path (Get-Item Env:CURSOR_PLUGIN_ROOT).Value 'launcher.ps1')))) --runner cursor\" ; exit 0"
+        "command": "powershell -NoProfile -NonInteractive -Command \"& ([scriptblock]::Create((Get-Content -Raw -LiteralPath (Join-Path $env:CURSOR_PLUGIN_ROOT 'launcher.ps1')))) --runner cursor\""
       }
     ],
     "beforeSubmitPrompt": [
       {
-        "command": "\"${CURSOR_PLUGIN_ROOT}/launcher.sh\" --runner cursor ; exit 0"
+        "command": "sh ./launcher.sh --runner cursor"
       },
       {
-        "command": "powershell -NoProfile -NonInteractive -Command \"& ([scriptblock]::Create((Get-Content -Raw -LiteralPath (Join-Path (Get-Item Env:CURSOR_PLUGIN_ROOT).Value 'launcher.ps1')))) --runner cursor\" ; exit 0"
+        "command": "powershell -NoProfile -NonInteractive -Command \"& ([scriptblock]::Create((Get-Content -Raw -LiteralPath (Join-Path $env:CURSOR_PLUGIN_ROOT 'launcher.ps1')))) --runner cursor\""
       }
     ],
     "preToolUse": [
       {
-        "command": "\"${CURSOR_PLUGIN_ROOT}/launcher.sh\" --runner cursor ; exit 0"
+        "command": "sh ./launcher.sh --runner cursor"
       },
       {
-        "command": "powershell -NoProfile -NonInteractive -Command \"& ([scriptblock]::Create((Get-Content -Raw -LiteralPath (Join-Path (Get-Item Env:CURSOR_PLUGIN_ROOT).Value 'launcher.ps1')))) --runner cursor\" ; exit 0"
+        "command": "powershell -NoProfile -NonInteractive -Command \"& ([scriptblock]::Create((Get-Content -Raw -LiteralPath (Join-Path $env:CURSOR_PLUGIN_ROOT 'launcher.ps1')))) --runner cursor\""
       }
     ],
     "postToolUse": [
       {
-        "command": "\"${CURSOR_PLUGIN_ROOT}/launcher.sh\" --runner cursor ; exit 0"
+        "command": "sh ./launcher.sh --runner cursor"
       },
       {
-        "command": "powershell -NoProfile -NonInteractive -Command \"& ([scriptblock]::Create((Get-Content -Raw -LiteralPath (Join-Path (Get-Item Env:CURSOR_PLUGIN_ROOT).Value 'launcher.ps1')))) --runner cursor\" ; exit 0"
+        "command": "powershell -NoProfile -NonInteractive -Command \"& ([scriptblock]::Create((Get-Content -Raw -LiteralPath (Join-Path $env:CURSOR_PLUGIN_ROOT 'launcher.ps1')))) --runner cursor\""
       }
     ],
     "postToolUseFailure": [
       {
-        "command": "\"${CURSOR_PLUGIN_ROOT}/launcher.sh\" --runner cursor ; exit 0"
+        "command": "sh ./launcher.sh --runner cursor"
       },
       {
-        "command": "powershell -NoProfile -NonInteractive -Command \"& ([scriptblock]::Create((Get-Content -Raw -LiteralPath (Join-Path (Get-Item Env:CURSOR_PLUGIN_ROOT).Value 'launcher.ps1')))) --runner cursor\" ; exit 0"
+        "command": "powershell -NoProfile -NonInteractive -Command \"& ([scriptblock]::Create((Get-Content -Raw -LiteralPath (Join-Path $env:CURSOR_PLUGIN_ROOT 'launcher.ps1')))) --runner cursor\""
       }
     ],
     "beforeShellExecution": [
       {
-        "command": "\"${CURSOR_PLUGIN_ROOT}/launcher.sh\" --runner cursor ; exit 0"
+        "command": "sh ./launcher.sh --runner cursor"
       },
       {
-        "command": "powershell -NoProfile -NonInteractive -Command \"& ([scriptblock]::Create((Get-Content -Raw -LiteralPath (Join-Path (Get-Item Env:CURSOR_PLUGIN_ROOT).Value 'launcher.ps1')))) --runner cursor\" ; exit 0"
+        "command": "powershell -NoProfile -NonInteractive -Command \"& ([scriptblock]::Create((Get-Content -Raw -LiteralPath (Join-Path $env:CURSOR_PLUGIN_ROOT 'launcher.ps1')))) --runner cursor\""
       }
     ],
     "beforeReadFile": [
       {
-        "command": "\"${CURSOR_PLUGIN_ROOT}/launcher.sh\" --runner cursor ; exit 0"
+        "command": "sh ./launcher.sh --runner cursor"
       },
       {
-        "command": "powershell -NoProfile -NonInteractive -Command \"& ([scriptblock]::Create((Get-Content -Raw -LiteralPath (Join-Path (Get-Item Env:CURSOR_PLUGIN_ROOT).Value 'launcher.ps1')))) --runner cursor\" ; exit 0"
+        "command": "powershell -NoProfile -NonInteractive -Command \"& ([scriptblock]::Create((Get-Content -Raw -LiteralPath (Join-Path $env:CURSOR_PLUGIN_ROOT 'launcher.ps1')))) --runner cursor\""
       }
     ],
     "beforeMCPExecution": [
       {
-        "command": "\"${CURSOR_PLUGIN_ROOT}/launcher.sh\" --runner cursor ; exit 0"
+        "command": "sh ./launcher.sh --runner cursor"
       },
       {
-        "command": "powershell -NoProfile -NonInteractive -Command \"& ([scriptblock]::Create((Get-Content -Raw -LiteralPath (Join-Path (Get-Item Env:CURSOR_PLUGIN_ROOT).Value 'launcher.ps1')))) --runner cursor\" ; exit 0"
+        "command": "powershell -NoProfile -NonInteractive -Command \"& ([scriptblock]::Create((Get-Content -Raw -LiteralPath (Join-Path $env:CURSOR_PLUGIN_ROOT 'launcher.ps1')))) --runner cursor\""
       }
     ],
     "subagentStart": [
       {
-        "command": "\"${CURSOR_PLUGIN_ROOT}/launcher.sh\" --runner cursor ; exit 0"
+        "command": "sh ./launcher.sh --runner cursor"
       },
       {
-        "command": "powershell -NoProfile -NonInteractive -Command \"& ([scriptblock]::Create((Get-Content -Raw -LiteralPath (Join-Path (Get-Item Env:CURSOR_PLUGIN_ROOT).Value 'launcher.ps1')))) --runner cursor\" ; exit 0"
+        "command": "powershell -NoProfile -NonInteractive -Command \"& ([scriptblock]::Create((Get-Content -Raw -LiteralPath (Join-Path $env:CURSOR_PLUGIN_ROOT 'launcher.ps1')))) --runner cursor\""
       }
     ],
     "subagentStop": [
       {
-        "command": "\"${CURSOR_PLUGIN_ROOT}/launcher.sh\" --runner cursor ; exit 0"
+        "command": "sh ./launcher.sh --runner cursor"
       },
       {
-        "command": "powershell -NoProfile -NonInteractive -Command \"& ([scriptblock]::Create((Get-Content -Raw -LiteralPath (Join-Path (Get-Item Env:CURSOR_PLUGIN_ROOT).Value 'launcher.ps1')))) --runner cursor\" ; exit 0"
+        "command": "powershell -NoProfile -NonInteractive -Command \"& ([scriptblock]::Create((Get-Content -Raw -LiteralPath (Join-Path $env:CURSOR_PLUGIN_ROOT 'launcher.ps1')))) --runner cursor\""
       }
     ],
     "stop": [
       {
-        "command": "\"${CURSOR_PLUGIN_ROOT}/launcher.sh\" --runner cursor ; exit 0"
+        "command": "sh ./launcher.sh --runner cursor"
       },
       {
-        "command": "powershell -NoProfile -NonInteractive -Command \"& ([scriptblock]::Create((Get-Content -Raw -LiteralPath (Join-Path (Get-Item Env:CURSOR_PLUGIN_ROOT).Value 'launcher.ps1')))) --runner cursor\" ; exit 0"
+        "command": "powershell -NoProfile -NonInteractive -Command \"& ([scriptblock]::Create((Get-Content -Raw -LiteralPath (Join-Path $env:CURSOR_PLUGIN_ROOT 'launcher.ps1')))) --runner cursor\""
       }
     ]
   }

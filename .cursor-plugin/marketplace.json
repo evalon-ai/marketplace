@@ -1,17 +1,17 @@
 {
+  "$schema": "https://json.schemastore.org/cursor-marketplace.json",
   "name": "ev-ai-marketplace",
   "owner": {
     "name": "ev-ai",
     "email": "platform@ev.ai"
   },
   "metadata": {
-    "description": "Layer-3 runtime telemetry hooks for Claude Code, Cursor, and Codex.",
-    "pluginRoot": "plugins"
+    "description": "Layer-3 runtime telemetry hooks for Claude Code, Cursor, and Codex."
   },
   "plugins": [
     {
       "name": "ev-ai-agent-hooks",
-      "source": "cursor",
+      "source": "./plugins/cursor",
       "description": "Runtime telemetry hooks for Cursor (observe-only, fail-open).",
       "license": "Proprietary"
     }
