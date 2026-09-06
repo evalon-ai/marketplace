@@ -100,7 +100,7 @@ Project `.claude/settings.json` (commit both keys for collaborators):
 Configure collector URL:
 
 ```bash
-npx -y @ev-ai/agent-hook@1.1.4 configure \
+npx -y @ev-ai/agent-hook@1.1.5 configure \
   --url "https://<collector-host>/<orgToken>/hook"
 ```
 
@@ -129,7 +129,7 @@ Restart runners; confirm events in the collector.
 If the repo already used file-wiring install, migrate first:
 
 ```bash
-npx -y @ev-ai/agent-hook@1.1.4 migrate-to-plugin
+npx -y @ev-ai/agent-hook@1.1.5 migrate-to-plugin
 ```
 
 Do **not** also keep per-event blocks in runner settings — that double-POSTs.
