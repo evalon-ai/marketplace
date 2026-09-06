@@ -10,7 +10,9 @@ disable-model-invocation: true
 
 # /pin-agent-hook
 
-Set each plugin `version` to `X.Y.Z`, verify the generated launcher payload is present and that no `hooks.json` still wires `npx`, and sync README examples. Owner is **ev-ai**. **Never edit until user confirms.**
+Set each plugin `version` to `X.Y.Z`, verify the generated launcher payload is present and that no `hooks.json` still wires `npx`, and sync README examples. Owner is **ev-ai**. **Never edit until user confirms** when this skill is invoked on its own.
+
+When `/publish-agent-hooks` in the monorepo already ran `sync:hooks` for **NEW** in the same session, skip this confirm gate and run `pin.mjs NEW` as that skill's Phase A3b. Do not push. Standalone `/pin-agent-hook` still waits for confirm.
 
 ## Rule
 

@@ -151,10 +151,11 @@ To also anchor the binary download to this repo, cross-compile first — `yarn w
 aws s3 sync packages/agent-hook/compile-out/bin s3://ev-ai-agent-hook/<X.Y.Z>/
 ```
 
-Then set the plugin manifest versions to the package version here:
+Then set the plugin manifest versions to the package version here (also run automatically as part of monorepo `/publish-agent-hooks`):
 
 ```bash
 /pin-agent-hook <X.Y.Z>
+# or: node .cursor/skills/pin-agent-hook/scripts/pin.mjs <X.Y.Z>
 ```
 
 Commit and push; the plugin payload ships with the plugin.
