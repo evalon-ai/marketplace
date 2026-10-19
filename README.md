@@ -2,9 +2,11 @@
 
 Claude Code / Cursor / Codex plugin marketplace for Layer-3 runtime telemetry.
 
-Each plugin ships its own runtime: `hook.mjs` at the plugin root. `hooks.json` invokes `node hook.mjs` via the runner's plugin-root variable. Customer repos enable a plugin and commit a shared `collector_url` manifest — not per-event blocks in runner settings.
+Each plugin ships its own runtime under `dist/`: the compiled `launcher.mjs` and the bundled `hook.mjs` it runs. `hooks.json` invokes `node dist/launcher.mjs` via the runner's plugin-root variable. Customer repos enable a plugin and commit a shared `collector_url` manifest — not per-event blocks in runner settings.
 
-> **A plugin hook never reaches the npm registry.** The runtime is the shipped `hook.mjs`, pinned by the payload `version` file. A plugin never runs a runtime newer than the event map it shipped with. The package still publishes publicly as **`@ev-ai/agent-hook`** for `configure` / `migrate-to-plugin` and for repos on file-wiring; consumers need no `.npmrc` and no token.
+> **Requires Node.js (>= 18) on `PATH`.** There is no binary fallback: without `node` every hook command is a fail-open no-op.
+
+> **A plugin hook never reaches the npm registry.** The runtime is the shipped payload, pinned by the payload `package.json` version. The launcher may adopt a newer *signed* `hook.mjs` published by the collector, but never one below the shipped version. The package still publishes publicly as **`@ev-ai/agent-hook`** for `configure` / `migrate-to-plugin` and for repos on file-wiring; consumers need no `.npmrc` and no token.
 
 ## Layout
 
@@ -16,17 +18,19 @@ Each plugin ships its own runtime: `hook.mjs` at the plugin root. `hooks.json` i
 └── plugins/
     ├── claude/                       # Claude Code
     │   ├── .claude-plugin/plugin.json   # name: ev-ai-agent-hooks
-    │   ├── hooks/hooks.json          # event map — invokes node hook.mjs
-    │   ├── hook.mjs                  # runtime payload (bundled, zero-dependency)
-    │   ├── version                   # payload version
-    │   └── SHA256SUMS                # optional checksums for CDN binaries
+    │   ├── hooks/hooks.json          # event map — invokes node dist/launcher.mjs
+    │   ├── package.json              # payload version + launcher protocol (read by the launcher)
+    │   └── dist/
+    │       ├── launcher.mjs          # hook entry: selects a hook and runs it
+    │       ├── launcher-update.mjs   # signed hook update check, loaded on demand
+    │       └── hook.mjs              # bundled runtime (zero-dependency)
     ├── cursor/                       # Cursor — same files
     └── codex/                        # OpenAI Codex — same files
 ```
 
 Every file above except `plugin.json` is **generated** — never hand-edit them here. They are copied from (or stamped by) `packages/agent-hook` in the monorepo via `sync:hooks` (see [Releasing](#releasing)).
 
-`version` carries the package version in the *payload* rather than in a hook command, which is what lets a bump ship a new `hook.mjs` without rewriting `hooks.json`. `SHA256SUMS` is optional and only present after a binary compile.
+`package.json` carries the package version in the *payload* rather than in a hook command, which is what lets a bump ship a new payload without rewriting `hooks.json`. The `dist/` layout mirrors the npm package: the launcher finds its siblings and `../package.json` relative to itself.
 
 ## Plugins
 
@@ -42,13 +46,15 @@ All three runners install the same plugin name — `ev-ai-agent-hooks@ev-ai-mark
 
 ```text
 runner event
-  → node ${PLUGIN_ROOT}/hook.mjs --runner <runner>
+  → node ${PLUGIN_ROOT}/dist/launcher.mjs --runner <runner>
+  → select hook: cached signed update, else bundled dist/hook.mjs
+  → node <hook> --runner <runner>
   → ack; collect + POST continue detached
 ```
 
-**No package version appears in any hook command.** A runtime bump changes `hook.mjs`, not `hooks.json` — so it re-prompts nobody. That matters most on Codex, which trusts a hash of the hook definition and un-trusts it on every change.
+**No package version appears in any hook command.** A runtime bump changes the payload, not `hooks.json` — so it re-prompts nobody. That matters most on Codex, which trusts a hash of the hook definition and un-trusts it on every change.
 
-**Two entries per event on Claude and Cursor**, one POSIX and one PowerShell, both registered unconditionally and selected at fire time: a single path-bearing command cannot parse in both `sh` and PowerShell. Exactly one POSTs — `node` runs on macOS / Linux, and `powershell` is what Windows hosts run. Codex has a first-class `commandWindows` field and gets one entry with both.
+**One entry per event on Claude**: Claude substitutes `${CLAUDE_PLUGIN_ROOT}` itself, so the same `node "…/dist/launcher.mjs"` command runs in Git Bash and PowerShell. **Two entries per event on Cursor**, one POSIX and one PowerShell, both registered and selected at fire time — exactly one POSTs. Codex has a first-class `commandWindows` field and gets one entry with both.
 
 **Every command ends in `; exit 0`.** A missing payload or an unsubstituted plugin-root variable becomes stderr noise instead of a hook error on every event. Delivery is observe-only and fail-open by construction.
 
@@ -132,13 +138,7 @@ yarn workspace @ev-ai/agent-hook build
 yarn workspace @ev-ai/agent-hook sync:hooks -- /path/to/marketplace
 ```
 
-That copies `hook.mjs` into all three plugin trees, stamps `version`, and rewrites every `hooks/hooks.json`.
-
-To also anchor the binary download to this repo, cross-compile first — `yarn workspace @ev-ai/agent-hook build:hook-binary` — and `sync:hooks` picks up the generated `SHA256SUMS`. The six binaries themselves go to the CDN, never into this repo:
-
-```bash
-aws s3 sync packages/agent-hook/compile-out/bin s3://ev-ai-agent-hook/<X.Y.Z>/
-```
+That copies `dist/launcher.mjs`, `dist/launcher-update.mjs` and `dist/hook.mjs` into all three plugin trees, writes each `package.json`, and rewrites every `hooks/hooks.json`.
 
 Then set the plugin manifest versions to the package version here (also run automatically as part of monorepo `/publish-agent-hooks`):
 
