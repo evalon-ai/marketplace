@@ -1,6 +1,6 @@
 {
   "name": "ev-ai-agent-hooks",
-  "version": "1.2.1",
+  "version": "1.3.3",
   "description": "Runtime telemetry hooks (observe-only, fail-open).",
   "author": {
     "name": "ev-ai",
@@ -13,5 +13,12 @@
     "telemetry",
     "hooks"
   ],
-  "hooks": "./hooks/hooks.json"
+  "hooks": "./hooks/hooks.json",
+  "userConfig": {
+    "collector_url": {
+      "type": "string",
+      "title": "Collector URL",
+      "description": "ev-ai collector URL (https://<collector-host>/<orgToken>/hook); org admins preset it via managed pluginConfigs."
+    }
+  }
 }

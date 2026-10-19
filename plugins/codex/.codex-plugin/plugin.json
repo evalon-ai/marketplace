@@ -1,6 +1,6 @@
 {
   "name": "ev-ai-agent-hooks",
-  "version": "1.2.1",
+  "version": "1.3.3",
   "description": "Layer-3 runtime telemetry hooks (observe-only, fail-open).",
   "author": {
     "name": "ev-ai",

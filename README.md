@@ -95,13 +95,38 @@ Project `.claude/settings.json` (commit both keys for collaborators):
 Configure collector URL:
 
 ```bash
-npx -y @ev-ai/agent-hook@1.2.1 configure \
+npx -y @ev-ai/agent-hook@1.3.3 configure \
   --url "https://<collector-host>/<orgToken>/hook"
 ```
 
 Commit the collector manifest (`collector_url`).
 
 `enabledPlugins` without `extraKnownMarketplaces` only works on a machine that already ran `claude plugin marketplace add` — other clones will not know `ev-ai-marketplace`.
+
+### Claude Code — org rollout (managed settings)
+
+Put this in Claude managed settings (admin console, MDM, or `managed-settings.json`). Every user's Claude Code registers the marketplace and installs the plugin at its next session start, with no per-repo or per-machine step:
+
+```json
+{
+  "extraKnownMarketplaces": {
+    "ev-ai-marketplace": {
+      "source": { "source": "github", "repo": "evalon-ai/marketplace" },
+      "autoUpdate": true
+    }
+  },
+  "enabledPlugins": {
+    "ev-ai-agent-hooks@ev-ai-marketplace": true
+  },
+  "pluginConfigs": {
+    "ev-ai-agent-hooks@ev-ai-marketplace": {
+      "options": { "collector_url": "https://<collector-host>/<orgToken>/hook" }
+    }
+  }
+}
+```
+
+`pluginConfigs` presets the plugin's `collector_url` option; Claude Code exports it to every hook as `CLAUDE_PLUGIN_OPTION_COLLECTOR_URL`. It is the fallback: `--url`, `EV_AI_HOOK_MANIFEST`, `~/.ev-ai/config.json` and a committed repo manifest all win over it. `autoUpdate` is off by default for third-party marketplaces — without it the fleet never gets a release.
 
 ### Cursor
 
@@ -124,7 +149,7 @@ Restart runners; confirm events in the collector.
 If the repo already used file-wiring install, migrate first:
 
 ```bash
-npx -y @ev-ai/agent-hook@1.2.1 migrate-to-plugin
+npx -y @ev-ai/agent-hook@1.3.3 migrate-to-plugin
 ```
 
 Do **not** also keep per-event blocks in runner settings — that double-POSTs.
