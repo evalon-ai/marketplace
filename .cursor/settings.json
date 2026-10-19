@@ -1,7 +1,1 @@
-{
-  "plugins": {
-    "ev-ai-marketplace/ev-ai-agent-hooks": {
-      "enabled": true
-    }
-  }
-}
+{}

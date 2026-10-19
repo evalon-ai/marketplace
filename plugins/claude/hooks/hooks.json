@@ -5,11 +5,11 @@
         "hooks": [
           {
             "type": "command",
-            "command": "\"${CLAUDE_PLUGIN_ROOT}/launcher.sh\" --runner claude ; exit 0"
+            "command": "node \"${CLAUDE_PLUGIN_ROOT}/hook.mjs\" --runner claude ; exit 0"
           },
           {
             "type": "command",
-            "command": "powershell -NoProfile -NonInteractive -Command \"& ([scriptblock]::Create((Get-Content -Raw -LiteralPath (Join-Path (Get-Item Env:CLAUDE_PLUGIN_ROOT).Value 'launcher.ps1')))) --runner claude\" ; exit 0"
+            "command": "powershell -NoProfile -NonInteractive -Command \"node (Join-Path (Get-Item Env:CLAUDE_PLUGIN_ROOT).Value 'hook.mjs') --runner claude\" ; exit 0"
           }
         ]
       }
@@ -19,11 +19,25 @@
         "hooks": [
           {
             "type": "command",
-            "command": "\"${CLAUDE_PLUGIN_ROOT}/launcher.sh\" --runner claude ; exit 0"
+            "command": "node \"${CLAUDE_PLUGIN_ROOT}/hook.mjs\" --runner claude ; exit 0"
           },
           {
             "type": "command",
-            "command": "powershell -NoProfile -NonInteractive -Command \"& ([scriptblock]::Create((Get-Content -Raw -LiteralPath (Join-Path (Get-Item Env:CLAUDE_PLUGIN_ROOT).Value 'launcher.ps1')))) --runner claude\" ; exit 0"
+            "command": "powershell -NoProfile -NonInteractive -Command \"node (Join-Path (Get-Item Env:CLAUDE_PLUGIN_ROOT).Value 'hook.mjs') --runner claude\" ; exit 0"
+          }
+        ]
+      }
+    ],
+    "UserPromptSubmit": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node \"${CLAUDE_PLUGIN_ROOT}/hook.mjs\" --runner claude ; exit 0"
+          },
+          {
+            "type": "command",
+            "command": "powershell -NoProfile -NonInteractive -Command \"node (Join-Path (Get-Item Env:CLAUDE_PLUGIN_ROOT).Value 'hook.mjs') --runner claude\" ; exit 0"
           }
         ]
       }
@@ -33,11 +47,11 @@
         "hooks": [
           {
             "type": "command",
-            "command": "\"${CLAUDE_PLUGIN_ROOT}/launcher.sh\" --runner claude ; exit 0"
+            "command": "node \"${CLAUDE_PLUGIN_ROOT}/hook.mjs\" --runner claude ; exit 0"
           },
           {
             "type": "command",
-            "command": "powershell -NoProfile -NonInteractive -Command \"& ([scriptblock]::Create((Get-Content -Raw -LiteralPath (Join-Path (Get-Item Env:CLAUDE_PLUGIN_ROOT).Value 'launcher.ps1')))) --runner claude\" ; exit 0"
+            "command": "powershell -NoProfile -NonInteractive -Command \"node (Join-Path (Get-Item Env:CLAUDE_PLUGIN_ROOT).Value 'hook.mjs') --runner claude\" ; exit 0"
           }
         ]
       }
@@ -47,11 +61,11 @@
         "hooks": [
           {
             "type": "command",
-            "command": "\"${CLAUDE_PLUGIN_ROOT}/launcher.sh\" --runner claude ; exit 0"
+            "command": "node \"${CLAUDE_PLUGIN_ROOT}/hook.mjs\" --runner claude ; exit 0"
           },
           {
             "type": "command",
-            "command": "powershell -NoProfile -NonInteractive -Command \"& ([scriptblock]::Create((Get-Content -Raw -LiteralPath (Join-Path (Get-Item Env:CLAUDE_PLUGIN_ROOT).Value 'launcher.ps1')))) --runner claude\" ; exit 0"
+            "command": "powershell -NoProfile -NonInteractive -Command \"node (Join-Path (Get-Item Env:CLAUDE_PLUGIN_ROOT).Value 'hook.mjs') --runner claude\" ; exit 0"
           }
         ]
       }
@@ -61,11 +75,11 @@
         "hooks": [
           {
             "type": "command",
-            "command": "\"${CLAUDE_PLUGIN_ROOT}/launcher.sh\" --runner claude ; exit 0"
+            "command": "node \"${CLAUDE_PLUGIN_ROOT}/hook.mjs\" --runner claude ; exit 0"
           },
           {
             "type": "command",
-            "command": "powershell -NoProfile -NonInteractive -Command \"& ([scriptblock]::Create((Get-Content -Raw -LiteralPath (Join-Path (Get-Item Env:CLAUDE_PLUGIN_ROOT).Value 'launcher.ps1')))) --runner claude\" ; exit 0"
+            "command": "powershell -NoProfile -NonInteractive -Command \"node (Join-Path (Get-Item Env:CLAUDE_PLUGIN_ROOT).Value 'hook.mjs') --runner claude\" ; exit 0"
           }
         ]
       }
@@ -75,11 +89,11 @@
         "hooks": [
           {
             "type": "command",
-            "command": "\"${CLAUDE_PLUGIN_ROOT}/launcher.sh\" --runner claude ; exit 0"
+            "command": "node \"${CLAUDE_PLUGIN_ROOT}/hook.mjs\" --runner claude ; exit 0"
           },
           {
             "type": "command",
-            "command": "powershell -NoProfile -NonInteractive -Command \"& ([scriptblock]::Create((Get-Content -Raw -LiteralPath (Join-Path (Get-Item Env:CLAUDE_PLUGIN_ROOT).Value 'launcher.ps1')))) --runner claude\" ; exit 0"
+            "command": "powershell -NoProfile -NonInteractive -Command \"node (Join-Path (Get-Item Env:CLAUDE_PLUGIN_ROOT).Value 'hook.mjs') --runner claude\" ; exit 0"
           }
         ]
       }
@@ -89,11 +103,11 @@
         "hooks": [
           {
             "type": "command",
-            "command": "\"${CLAUDE_PLUGIN_ROOT}/launcher.sh\" --runner claude ; exit 0"
+            "command": "node \"${CLAUDE_PLUGIN_ROOT}/hook.mjs\" --runner claude ; exit 0"
           },
           {
             "type": "command",
-            "command": "powershell -NoProfile -NonInteractive -Command \"& ([scriptblock]::Create((Get-Content -Raw -LiteralPath (Join-Path (Get-Item Env:CLAUDE_PLUGIN_ROOT).Value 'launcher.ps1')))) --runner claude\" ; exit 0"
+            "command": "powershell -NoProfile -NonInteractive -Command \"node (Join-Path (Get-Item Env:CLAUDE_PLUGIN_ROOT).Value 'hook.mjs') --runner claude\" ; exit 0"
           }
         ]
       }
@@ -103,11 +117,11 @@
         "hooks": [
           {
             "type": "command",
-            "command": "\"${CLAUDE_PLUGIN_ROOT}/launcher.sh\" --runner claude ; exit 0"
+            "command": "node \"${CLAUDE_PLUGIN_ROOT}/hook.mjs\" --runner claude ; exit 0"
           },
           {
             "type": "command",
-            "command": "powershell -NoProfile -NonInteractive -Command \"& ([scriptblock]::Create((Get-Content -Raw -LiteralPath (Join-Path (Get-Item Env:CLAUDE_PLUGIN_ROOT).Value 'launcher.ps1')))) --runner claude\" ; exit 0"
+            "command": "powershell -NoProfile -NonInteractive -Command \"node (Join-Path (Get-Item Env:CLAUDE_PLUGIN_ROOT).Value 'hook.mjs') --runner claude\" ; exit 0"
           }
         ]
       }
@@ -117,11 +131,11 @@
         "hooks": [
           {
             "type": "command",
-            "command": "\"${CLAUDE_PLUGIN_ROOT}/launcher.sh\" --runner claude ; exit 0"
+            "command": "node \"${CLAUDE_PLUGIN_ROOT}/hook.mjs\" --runner claude ; exit 0"
           },
           {
             "type": "command",
-            "command": "powershell -NoProfile -NonInteractive -Command \"& ([scriptblock]::Create((Get-Content -Raw -LiteralPath (Join-Path (Get-Item Env:CLAUDE_PLUGIN_ROOT).Value 'launcher.ps1')))) --runner claude\" ; exit 0"
+            "command": "powershell -NoProfile -NonInteractive -Command \"node (Join-Path (Get-Item Env:CLAUDE_PLUGIN_ROOT).Value 'hook.mjs') --runner claude\" ; exit 0"
           }
         ]
       }
@@ -131,11 +145,11 @@
         "hooks": [
           {
             "type": "command",
-            "command": "\"${CLAUDE_PLUGIN_ROOT}/launcher.sh\" --runner claude ; exit 0"
+            "command": "node \"${CLAUDE_PLUGIN_ROOT}/hook.mjs\" --runner claude ; exit 0"
           },
           {
             "type": "command",
-            "command": "powershell -NoProfile -NonInteractive -Command \"& ([scriptblock]::Create((Get-Content -Raw -LiteralPath (Join-Path (Get-Item Env:CLAUDE_PLUGIN_ROOT).Value 'launcher.ps1')))) --runner claude\" ; exit 0"
+            "command": "powershell -NoProfile -NonInteractive -Command \"node (Join-Path (Get-Item Env:CLAUDE_PLUGIN_ROOT).Value 'hook.mjs') --runner claude\" ; exit 0"
           }
         ]
       }
@@ -145,11 +159,11 @@
         "hooks": [
           {
             "type": "command",
-            "command": "\"${CLAUDE_PLUGIN_ROOT}/launcher.sh\" --runner claude ; exit 0"
+            "command": "node \"${CLAUDE_PLUGIN_ROOT}/hook.mjs\" --runner claude ; exit 0"
           },
           {
             "type": "command",
-            "command": "powershell -NoProfile -NonInteractive -Command \"& ([scriptblock]::Create((Get-Content -Raw -LiteralPath (Join-Path (Get-Item Env:CLAUDE_PLUGIN_ROOT).Value 'launcher.ps1')))) --runner claude\" ; exit 0"
+            "command": "powershell -NoProfile -NonInteractive -Command \"node (Join-Path (Get-Item Env:CLAUDE_PLUGIN_ROOT).Value 'hook.mjs') --runner claude\" ; exit 0"
           }
         ]
       }

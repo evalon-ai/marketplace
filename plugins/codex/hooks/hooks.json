@@ -5,8 +5,8 @@
         "hooks": [
           {
             "type": "command",
-            "command": "sh -c '\"${PLUGIN_ROOT}/launcher.sh\" --runner codex; exit 0'",
-            "commandWindows": "powershell -NoProfile -NonInteractive -Command \"& ([scriptblock]::Create((Get-Content -Raw -LiteralPath (Join-Path (Get-Item Env:PLUGIN_ROOT).Value 'launcher.ps1')))) --runner codex\" ; exit 0",
+            "command": "sh -c 'node \"${PLUGIN_ROOT}/hook.mjs\" --runner codex; exit 0'",
+            "commandWindows": "powershell -NoProfile -NonInteractive -Command \"node (Join-Path (Get-Item Env:PLUGIN_ROOT).Value 'hook.mjs') --runner codex\" ; exit 0",
             "statusMessage": "ev-ai runtime report"
           }
         ]
@@ -17,8 +17,8 @@
         "hooks": [
           {
             "type": "command",
-            "command": "sh -c '\"${PLUGIN_ROOT}/launcher.sh\" --runner codex; exit 0'",
-            "commandWindows": "powershell -NoProfile -NonInteractive -Command \"& ([scriptblock]::Create((Get-Content -Raw -LiteralPath (Join-Path (Get-Item Env:PLUGIN_ROOT).Value 'launcher.ps1')))) --runner codex\" ; exit 0",
+            "command": "sh -c 'node \"${PLUGIN_ROOT}/hook.mjs\" --runner codex; exit 0'",
+            "commandWindows": "powershell -NoProfile -NonInteractive -Command \"node (Join-Path (Get-Item Env:PLUGIN_ROOT).Value 'hook.mjs') --runner codex\" ; exit 0",
             "statusMessage": "ev-ai runtime report"
           }
         ]
@@ -29,8 +29,8 @@
         "hooks": [
           {
             "type": "command",
-            "command": "sh -c '\"${PLUGIN_ROOT}/launcher.sh\" --runner codex; exit 0'",
-            "commandWindows": "powershell -NoProfile -NonInteractive -Command \"& ([scriptblock]::Create((Get-Content -Raw -LiteralPath (Join-Path (Get-Item Env:PLUGIN_ROOT).Value 'launcher.ps1')))) --runner codex\" ; exit 0",
+            "command": "sh -c 'node \"${PLUGIN_ROOT}/hook.mjs\" --runner codex; exit 0'",
+            "commandWindows": "powershell -NoProfile -NonInteractive -Command \"node (Join-Path (Get-Item Env:PLUGIN_ROOT).Value 'hook.mjs') --runner codex\" ; exit 0",
             "statusMessage": "ev-ai runtime report"
           }
         ]
@@ -41,8 +41,8 @@
         "hooks": [
           {
             "type": "command",
-            "command": "sh -c '\"${PLUGIN_ROOT}/launcher.sh\" --runner codex; exit 0'",
-            "commandWindows": "powershell -NoProfile -NonInteractive -Command \"& ([scriptblock]::Create((Get-Content -Raw -LiteralPath (Join-Path (Get-Item Env:PLUGIN_ROOT).Value 'launcher.ps1')))) --runner codex\" ; exit 0",
+            "command": "sh -c 'node \"${PLUGIN_ROOT}/hook.mjs\" --runner codex; exit 0'",
+            "commandWindows": "powershell -NoProfile -NonInteractive -Command \"node (Join-Path (Get-Item Env:PLUGIN_ROOT).Value 'hook.mjs') --runner codex\" ; exit 0",
             "statusMessage": "ev-ai runtime report"
           }
         ]
@@ -53,8 +53,8 @@
         "hooks": [
           {
             "type": "command",
-            "command": "sh -c '\"${PLUGIN_ROOT}/launcher.sh\" --runner codex; exit 0'",
-            "commandWindows": "powershell -NoProfile -NonInteractive -Command \"& ([scriptblock]::Create((Get-Content -Raw -LiteralPath (Join-Path (Get-Item Env:PLUGIN_ROOT).Value 'launcher.ps1')))) --runner codex\" ; exit 0",
+            "command": "sh -c 'node \"${PLUGIN_ROOT}/hook.mjs\" --runner codex; exit 0'",
+            "commandWindows": "powershell -NoProfile -NonInteractive -Command \"node (Join-Path (Get-Item Env:PLUGIN_ROOT).Value 'hook.mjs') --runner codex\" ; exit 0",
             "statusMessage": "ev-ai runtime report"
           }
         ]
