@@ -1,6 +1,6 @@
 {
   "name": "@ev-ai/agent-hook",
-  "version": "1.3.3",
+  "version": "1.3.5",
   "private": true,
   "evAi": {
     "launcherProtocol": 1,
