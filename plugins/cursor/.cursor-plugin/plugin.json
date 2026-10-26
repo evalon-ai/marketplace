@@ -13,5 +13,18 @@
     "telemetry",
     "hooks"
   ],
-  "hooks": "./hooks/hooks.json"
+  "hooks": "./hooks/hooks.json",
+  "variables": {
+    "type": "object",
+    "properties": {
+      "COLLECTOR_URL": {
+        "type": "string",
+        "title": "Collector URL",
+        "description": "URL of the collector endpoint the hook posts to."
+      }
+    },
+    "required": [
+      "COLLECTOR_URL"
+    ]
+  }
 }

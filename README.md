@@ -134,7 +134,7 @@ Import this repo as a team/user marketplace (or submit via [cursor.com/marketpla
 
 Configure the same collector manifest as Claude (`configure` above).
 
-> Cursor has no equivalent of Claude's `pluginConfigs`: it does not pass plugin variables to hook commands, so there is no plugin-level collector URL. Use the committed manifest or `~/.ev-ai/config.json`.
+The plugin declares a required `COLLECTOR_URL` variable (`plugin.json` `variables`), so Cursor asks for the collector URL when the plugin is added and exports it to every hook as `COLLECTOR_URL`. Like Claude's `pluginConfigs` option, it is the fallback: `--url`, `EV_AI_HOOK_MANIFEST`, `~/.ev-ai/config.json` and a committed repo manifest all win over it. It needs a payload from `@ev-ai/agent-hook` that reads `COLLECTOR_URL`; older payloads ignore it and use the manifest.
 
 ### Codex
 
