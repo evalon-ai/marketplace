@@ -4,89 +4,56 @@
     "sessionStart": [
       {
         "command": "node \"${CURSOR_PLUGIN_ROOT}/dist/launcher.mjs\" --runner cursor ; exit 0"
-      },
-      {
-        "command": "powershell -NoProfile -NonInteractive -Command \"node (Join-Path (Get-Item Env:CURSOR_PLUGIN_ROOT).Value 'dist/launcher.mjs') --runner cursor\" ; exit 0"
       }
     ],
     "beforeSubmitPrompt": [
       {
         "command": "node \"${CURSOR_PLUGIN_ROOT}/dist/launcher.mjs\" --runner cursor ; exit 0"
-      },
-      {
-        "command": "powershell -NoProfile -NonInteractive -Command \"node (Join-Path (Get-Item Env:CURSOR_PLUGIN_ROOT).Value 'dist/launcher.mjs') --runner cursor\" ; exit 0"
       }
     ],
     "preToolUse": [
       {
         "command": "node \"${CURSOR_PLUGIN_ROOT}/dist/launcher.mjs\" --runner cursor ; exit 0"
-      },
-      {
-        "command": "powershell -NoProfile -NonInteractive -Command \"node (Join-Path (Get-Item Env:CURSOR_PLUGIN_ROOT).Value 'dist/launcher.mjs') --runner cursor\" ; exit 0"
       }
     ],
     "postToolUse": [
       {
         "command": "node \"${CURSOR_PLUGIN_ROOT}/dist/launcher.mjs\" --runner cursor ; exit 0"
-      },
-      {
-        "command": "powershell -NoProfile -NonInteractive -Command \"node (Join-Path (Get-Item Env:CURSOR_PLUGIN_ROOT).Value 'dist/launcher.mjs') --runner cursor\" ; exit 0"
       }
     ],
     "postToolUseFailure": [
       {
         "command": "node \"${CURSOR_PLUGIN_ROOT}/dist/launcher.mjs\" --runner cursor ; exit 0"
-      },
-      {
-        "command": "powershell -NoProfile -NonInteractive -Command \"node (Join-Path (Get-Item Env:CURSOR_PLUGIN_ROOT).Value 'dist/launcher.mjs') --runner cursor\" ; exit 0"
       }
     ],
     "beforeShellExecution": [
       {
         "command": "node \"${CURSOR_PLUGIN_ROOT}/dist/launcher.mjs\" --runner cursor ; exit 0"
-      },
-      {
-        "command": "powershell -NoProfile -NonInteractive -Command \"node (Join-Path (Get-Item Env:CURSOR_PLUGIN_ROOT).Value 'dist/launcher.mjs') --runner cursor\" ; exit 0"
       }
     ],
     "beforeReadFile": [
       {
         "command": "node \"${CURSOR_PLUGIN_ROOT}/dist/launcher.mjs\" --runner cursor ; exit 0"
-      },
-      {
-        "command": "powershell -NoProfile -NonInteractive -Command \"node (Join-Path (Get-Item Env:CURSOR_PLUGIN_ROOT).Value 'dist/launcher.mjs') --runner cursor\" ; exit 0"
       }
     ],
     "beforeMCPExecution": [
       {
         "command": "node \"${CURSOR_PLUGIN_ROOT}/dist/launcher.mjs\" --runner cursor ; exit 0"
-      },
-      {
-        "command": "powershell -NoProfile -NonInteractive -Command \"node (Join-Path (Get-Item Env:CURSOR_PLUGIN_ROOT).Value 'dist/launcher.mjs') --runner cursor\" ; exit 0"
       }
     ],
     "subagentStart": [
       {
         "command": "node \"${CURSOR_PLUGIN_ROOT}/dist/launcher.mjs\" --runner cursor ; exit 0"
-      },
-      {
-        "command": "powershell -NoProfile -NonInteractive -Command \"node (Join-Path (Get-Item Env:CURSOR_PLUGIN_ROOT).Value 'dist/launcher.mjs') --runner cursor\" ; exit 0"
       }
     ],
     "subagentStop": [
       {
         "command": "node \"${CURSOR_PLUGIN_ROOT}/dist/launcher.mjs\" --runner cursor ; exit 0"
-      },
-      {
-        "command": "powershell -NoProfile -NonInteractive -Command \"node (Join-Path (Get-Item Env:CURSOR_PLUGIN_ROOT).Value 'dist/launcher.mjs') --runner cursor\" ; exit 0"
       }
     ],
     "stop": [
       {
         "command": "node \"${CURSOR_PLUGIN_ROOT}/dist/launcher.mjs\" --runner cursor ; exit 0"
-      },
-      {
-        "command": "powershell -NoProfile -NonInteractive -Command \"node (Join-Path (Get-Item Env:CURSOR_PLUGIN_ROOT).Value 'dist/launcher.mjs') --runner cursor\" ; exit 0"
       }
     ]
   }

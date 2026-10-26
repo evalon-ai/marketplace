@@ -54,11 +54,11 @@ runner event
 
 **No package version appears in any hook command.** A runtime bump changes the payload, not `hooks.json` — so it re-prompts nobody. That matters most on Codex, which trusts a hash of the hook definition and un-trusts it on every change.
 
-**One entry per event on Claude**: Claude substitutes `${CLAUDE_PLUGIN_ROOT}` itself, so the same `node "…/dist/launcher.mjs"` command runs in Git Bash and PowerShell. **Two entries per event on Cursor**, one POSIX and one PowerShell, both registered and selected at fire time — exactly one POSTs. Codex has a first-class `commandWindows` field and gets one entry with both.
+**One entry per event on Claude and Cursor**: each runner substitutes its plugin-root variable (`${CLAUDE_PLUGIN_ROOT}` / `${CURSOR_PLUGIN_ROOT}`) itself, so the same `node "…/dist/launcher.mjs"` command runs in a POSIX shell and in PowerShell (Cursor uses `pwsh`, else Windows PowerShell, on Windows). Neither gets a `powershell -Command` twin: both runners start every hook on an event in parallel, and a nested Windows PowerShell 5.1 start costs 20-45 s per event — long enough to outlive the 30 s event claim and post the event twice. Codex has a first-class `commandWindows` field and gets one entry with both.
 
 **Every command ends in `; exit 0`.** A missing payload or an unsubstituted plugin-root variable becomes stderr noise instead of a hook error on every event. Delivery is observe-only and fail-open by construction.
 
-POSIX commands expand `${CLAUDE_PLUGIN_ROOT}` / `${CURSOR_PLUGIN_ROOT}` / `${PLUGIN_ROOT}`. The PowerShell entry reads `Env:*_PLUGIN_ROOT` itself rather than trusting runner-side substitution.
+POSIX commands expand `${CLAUDE_PLUGIN_ROOT}` / `${CURSOR_PLUGIN_ROOT}` / `${PLUGIN_ROOT}`. Codex's `commandWindows` reads `Env:PLUGIN_ROOT` itself rather than trusting runner-side substitution.
 
 ## Install
 
@@ -134,7 +134,7 @@ Import this repo as a team/user marketplace (or submit via [cursor.com/marketpla
 
 Configure the same collector manifest as Claude (`configure` above).
 
-> Cursor loads plugin hooks but does **not** register their commands today — plugin delivery is not hook execution on Cursor. Until that is fixed, the working Cursor path is Enterprise / Team `hooks.json` or a committed `.cursor/hooks.json`.
+> Cursor has no equivalent of Claude's `pluginConfigs`: it does not pass plugin variables to hook commands, so there is no plugin-level collector URL. Use the committed manifest or `~/.ev-ai/config.json`.
 
 ### Codex
 
