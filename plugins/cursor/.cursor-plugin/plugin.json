@@ -20,7 +20,7 @@
       "COLLECTOR_URL": {
         "type": "string",
         "title": "Collector URL",
-        "description": "ev-ai collector URL (https://<collector-host>/<orgToken>/hook). Cursor exports it to every hook as COLLECTOR_URL."
+        "description": "URL of the collector endpoint the hook posts to."
       }
     },
     "required": [
