@@ -1,0 +1,13 @@
+{
+  "mcpServers": {
+    "ev-ai-agent-hooks": {
+      "command": "${CURSOR_PLUGIN_ROOT}/scripts/run-node.cmd",
+      "args": [
+        "${CURSOR_PLUGIN_ROOT}/scripts/collector-url-mcp.mjs"
+      ],
+      "env": {
+        "COLLECTOR_URL": "${COLLECTOR_URL}"
+      }
+    }
+  }
+}
