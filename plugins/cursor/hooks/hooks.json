@@ -3,57 +3,57 @@
   "hooks": {
     "sessionStart": [
       {
-        "command": "\"${CURSOR_PLUGIN_ROOT}/scripts/run-node.cmd\" \"${CURSOR_PLUGIN_ROOT}/dist/launcher.mjs\" --runner cursor --debug ; exit 0"
+        "command": "\"${CURSOR_PLUGIN_ROOT}/scripts/run-node.cmd\" \"${CURSOR_PLUGIN_ROOT}/dist/launcher.mjs\" --runner cursor ; exit 0"
       }
     ],
     "beforeSubmitPrompt": [
       {
-        "command": "\"${CURSOR_PLUGIN_ROOT}/scripts/run-node.cmd\" \"${CURSOR_PLUGIN_ROOT}/dist/launcher.mjs\" --runner cursor --debug ; exit 0"
+        "command": "\"${CURSOR_PLUGIN_ROOT}/scripts/run-node.cmd\" \"${CURSOR_PLUGIN_ROOT}/dist/launcher.mjs\" --runner cursor ; exit 0"
       }
     ],
     "preToolUse": [
       {
-        "command": "\"${CURSOR_PLUGIN_ROOT}/scripts/run-node.cmd\" \"${CURSOR_PLUGIN_ROOT}/dist/launcher.mjs\" --runner cursor --debug ; exit 0"
+        "command": "\"${CURSOR_PLUGIN_ROOT}/scripts/run-node.cmd\" \"${CURSOR_PLUGIN_ROOT}/dist/launcher.mjs\" --runner cursor ; exit 0"
       }
     ],
     "postToolUse": [
       {
-        "command": "\"${CURSOR_PLUGIN_ROOT}/scripts/run-node.cmd\" \"${CURSOR_PLUGIN_ROOT}/dist/launcher.mjs\" --runner cursor --debug ; exit 0"
+        "command": "\"${CURSOR_PLUGIN_ROOT}/scripts/run-node.cmd\" \"${CURSOR_PLUGIN_ROOT}/dist/launcher.mjs\" --runner cursor ; exit 0"
       }
     ],
     "postToolUseFailure": [
       {
-        "command": "\"${CURSOR_PLUGIN_ROOT}/scripts/run-node.cmd\" \"${CURSOR_PLUGIN_ROOT}/dist/launcher.mjs\" --runner cursor --debug ; exit 0"
+        "command": "\"${CURSOR_PLUGIN_ROOT}/scripts/run-node.cmd\" \"${CURSOR_PLUGIN_ROOT}/dist/launcher.mjs\" --runner cursor ; exit 0"
       }
     ],
     "beforeShellExecution": [
       {
-        "command": "\"${CURSOR_PLUGIN_ROOT}/scripts/run-node.cmd\" \"${CURSOR_PLUGIN_ROOT}/dist/launcher.mjs\" --runner cursor --debug ; exit 0"
+        "command": "\"${CURSOR_PLUGIN_ROOT}/scripts/run-node.cmd\" \"${CURSOR_PLUGIN_ROOT}/dist/launcher.mjs\" --runner cursor ; exit 0"
       }
     ],
     "beforeReadFile": [
       {
-        "command": "\"${CURSOR_PLUGIN_ROOT}/scripts/run-node.cmd\" \"${CURSOR_PLUGIN_ROOT}/dist/launcher.mjs\" --runner cursor --debug ; exit 0"
+        "command": "\"${CURSOR_PLUGIN_ROOT}/scripts/run-node.cmd\" \"${CURSOR_PLUGIN_ROOT}/dist/launcher.mjs\" --runner cursor ; exit 0"
       }
     ],
     "beforeMCPExecution": [
       {
-        "command": "\"${CURSOR_PLUGIN_ROOT}/scripts/run-node.cmd\" \"${CURSOR_PLUGIN_ROOT}/dist/launcher.mjs\" --runner cursor --debug ; exit 0"
+        "command": "\"${CURSOR_PLUGIN_ROOT}/scripts/run-node.cmd\" \"${CURSOR_PLUGIN_ROOT}/dist/launcher.mjs\" --runner cursor ; exit 0"
       }
     ],
     "subagentStart": [
       {
-        "command": "\"${CURSOR_PLUGIN_ROOT}/scripts/run-node.cmd\" \"${CURSOR_PLUGIN_ROOT}/dist/launcher.mjs\" --runner cursor --debug ; exit 0"
+        "command": "\"${CURSOR_PLUGIN_ROOT}/scripts/run-node.cmd\" \"${CURSOR_PLUGIN_ROOT}/dist/launcher.mjs\" --runner cursor ; exit 0"
       }
     ],
     "subagentStop": [
       {
-        "command": "\"${CURSOR_PLUGIN_ROOT}/scripts/run-node.cmd\" \"${CURSOR_PLUGIN_ROOT}/dist/launcher.mjs\" --runner cursor --debug ; exit 0"
+        "command": "\"${CURSOR_PLUGIN_ROOT}/scripts/run-node.cmd\" \"${CURSOR_PLUGIN_ROOT}/dist/launcher.mjs\" --runner cursor ; exit 0"
       }
     ],
     "stop": [
       {
-        "command": "\"${CURSOR_PLUGIN_ROOT}/scripts/run-node.cmd\" \"${CURSOR_PLUGIN_ROOT}/dist/launcher.mjs\" --runner cursor --debug ; exit 0"
+        "command": "\"${CURSOR_PLUGIN_ROOT}/scripts/run-node.cmd\" \"${CURSOR_PLUGIN_ROOT}/dist/launcher.mjs\" --runner cursor ; exit 0"
       }
     ]
   }
