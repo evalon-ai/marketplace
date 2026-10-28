@@ -3,7 +3,8 @@
     "ev-ai-agent-hooks": {
       "command": "${CURSOR_PLUGIN_ROOT}/scripts/run-node.cmd",
       "args": [
-        "${CURSOR_PLUGIN_ROOT}/scripts/collector-url-mcp.mjs"
+        "${CURSOR_PLUGIN_ROOT}/scripts/collector-url-mcp.mjs",
+        "${COLLECTOR_URL}"
       ],
       "env": {
         "COLLECTOR_URL": "${COLLECTOR_URL}"

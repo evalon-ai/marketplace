@@ -10,12 +10,38 @@ export function homeConfigPath(home = homedir()) {
   return join(home, '.ev-ai', 'config.json');
 }
 
+/** A plugin placeholder Cursor did not substitute, such as `${COLLECTOR_URL}`. */
+function unsubstituted(value) {
+  return value.includes('${');
+}
+
+/**
+ * First real collector URL. Cursor substitutes `${COLLECTOR_URL}` in MCP args.
+ * The env value is the same variable, and is ignored when it is still the placeholder.
+ */
+export function collectorUrlFromLaunch(env = process.env, argv = process.argv) {
+  const candidates = [];
+  for (const arg of argv.slice(2)) {
+    if (arg.startsWith('--url=')) candidates.push(arg.slice('--url='.length));
+    else if (!arg.startsWith('-')) candidates.push(arg);
+  }
+  if (typeof env.COLLECTOR_URL === 'string') candidates.push(env.COLLECTOR_URL);
+  for (const value of candidates) {
+    const trimmed = value.trim();
+    if (!trimmed || unsubstituted(trimmed) || !/^https?:\/\//i.test(trimmed)) continue;
+    return trimmed;
+  }
+  return '';
+}
+
 /**
  * Set `collector_url` to the value this process was given. Other keys, including
- * `collector_url_override`, are left as they are.
+ * `collector_url_override`, are left as they are. A missing or unsubstituted
+ * value does not replace a URL already stored.
  */
 export function writeCollectorUrl(collectorUrl, home = homedir()) {
   const configPath = homeConfigPath(home);
+  if (!collectorUrl || unsubstituted(collectorUrl)) return configPath;
   mkdirSync(dirname(configPath), { recursive: true });
   let current = {};
   try {
@@ -103,7 +129,7 @@ function launchedAsScript() {
 }
 
 if (launchedAsScript()) {
-  const collectorUrl = process.env.COLLECTOR_URL ?? '';
+  const collectorUrl = collectorUrlFromLaunch();
   writeCollectorUrl(collectorUrl);
   startCollectorUrlServer(collectorUrl);
 }
