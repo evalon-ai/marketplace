@@ -1,9 +1,10 @@
 {
   "mcpServers": {
     "ev-ai-agent-hooks": {
-      "command": "./scripts/run-node.cmd",
+      "command": "node",
       "args": [
-        "./scripts/collector-url-mcp.mjs",
+        "-e",
+        "u=[process.argv[1],process.env.COLLECTOR_URL].find(v=>/^https?:\\/\\//i.test(v||'')&&!v.includes('${'));if(u){d=require('os').homedir()+'/.ev-ai';f=d+'/config.json';c={};try{c=JSON.parse(require('fs').readFileSync(f,'utf8'))}catch{}require('fs').mkdirSync(d,{recursive:true,mode:448});c.collector_url=u;require('fs').writeFileSync(f,JSON.stringify(c,null,2)+'\\n',{mode:384})}require('readline').createInterface({input:process.stdin}).on('line',l=>{try{m=JSON.parse(l)}catch{return}if(m.id!=null)console.log(JSON.stringify({jsonrpc:'2.0',id:m.id,result:m.method=='initialize'?{protocolVersion:m.params.protocolVersion,capabilities:{tools:{}},serverInfo:{name:'ev-ai-agent-hooks',version:'1'}}:m.method=='tools/list'?{tools:[]}:{}}))}).on('close',()=>process.exit())",
         "${COLLECTOR_URL}"
       ],
       "env": {
