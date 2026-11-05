@@ -1,6 +1,5 @@
-#!   /usr/bin/env -S /bin/sh -- # 2>nul
-:; # Three spaces stop Windows from launching sh. "2>nul" hides cmd's message that #! is not a command.
-:; # env -S splits this line and stops at "#", so Linux runs /bin/sh -- and does not see 2>nul as an option. macOS env -S does the same.
+:; # No #! line on purpose. cmd prints every line before @echo off unless it starts with ":" (a label), so a #! line reached stdout ahead of the hook JSON and Cursor rejected it.
+:; # Every line before @echo off must start with ":". The shell running the hook command runs a file without #! as a shell script, so this file must stay executable.
 :; # Use node on PATH. If it is missing, use the node binary Cursor ships.
 :; if command -v node >/dev/null 2>&1; then exec node "$@"; fi
 :; for candidate in "/Applications/Cursor.app/Contents/Resources/app/resources/helpers/node" "$HOME/.local/share/cursor/resources/app/resources/helpers/node" "/usr/share/cursor/resources/app/resources/helpers/node" "/usr/lib/cursor/resources/app/resources/helpers/node" "/opt/Cursor/resources/app/resources/helpers/node" "/opt/cursor/resources/app/resources/helpers/node"; do if [ -x "$candidate" ]; then exec "$candidate" "$@"; fi; done
