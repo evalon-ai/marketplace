@@ -1,6 +1,6 @@
 # ev-ai hooks marketplace
 
-Claude Code / Cursor / Codex plugin marketplace for Layer-3 runtime telemetry.
+Claude Code / Cursor / Codex / GitHub Copilot plugin marketplace for Layer-3 runtime telemetry.
 
 Each plugin ships its own runtime under `dist/`: the compiled `launcher.mjs` and the bundled `hook.mjs` it runs. `hooks.json` invokes `node dist/launcher.mjs` via the runner's plugin-root variable. Customer repos enable a plugin and commit a shared `collector_url` manifest — not per-event blocks in runner settings.
 
@@ -25,7 +25,8 @@ Each plugin ships its own runtime under `dist/`: the compiled `launcher.mjs` and
     │       ├── launcher-update.mjs   # signed hook update check, loaded on demand
     │       └── hook.mjs              # bundled runtime (zero-dependency)
     ├── cursor/                       # Cursor — same files
-    └── codex/                        # OpenAI Codex — same files
+    ├── codex/                        # OpenAI Codex — same files
+    └── copilot/                      # GitHub Copilot — plugin.json at the root, plus scripts/collector-url-mcp.mjs
 ```
 
 Every file above except `plugin.json` is **generated** — never hand-edit them here. They are copied from (or stamped by) `packages/agent-hook` in the monorepo via `sync:hooks` (see [Releasing](#releasing)).
@@ -41,6 +42,7 @@ All three runners install the same plugin name — `ev-ai-agent-hooks@ev-ai-mark
 | Claude Code | `.claude-plugin/marketplace.json` | `plugins/claude` |
 | Cursor | `.cursor-plugin/marketplace.json` | `plugins/cursor` |
 | OpenAI Codex | `.agents/plugins/marketplace.json` | `plugins/codex` |
+| GitHub Copilot | the enterprise's own `.github-private` marketplace (see [GitHub Copilot](#github-copilot)) | `plugins/copilot` |
 
 ## How a hook event runs
 
@@ -135,6 +137,14 @@ Import this repo as a team/user marketplace (or submit via [cursor.com/marketpla
 Configure the same collector manifest as Claude (`configure` above).
 
 The plugin declares a required `COLLECTOR_URL` variable (`plugin.json` `variables`), so Cursor asks for the collector URL when the plugin is added and exports it to every hook as `COLLECTOR_URL`. Like Claude's `pluginConfigs` option, it is the fallback: `--url`, `EV_AI_HOOK_MANIFEST`, `~/.ev-ai/config.json` and a committed repo manifest all win over it. It needs a payload from `@ev-ai/agent-hook` that reads `COLLECTOR_URL`; older payloads ignore it and use the manifest.
+
+### GitHub Copilot
+
+Copilot (CLI, VS Code, Copilot app) has no plugin variables, and enterprise managed settings carry no `env` or `hooks`. The enterprise commits its own `.github/plugin/marketplace.json` to its `.github-private` repo. Its plugin entry points `source` at `plugins/copilot` here and adds an `mcpServers` server that runs `node scripts/collector-url-mcp.mjs <URL>` at session start. The server writes `collector_url` to `~/.ev-ai/config.json`, where the hook reads it, as with the Cursor plugin's `mcp.json`.
+
+`hooks/hooks.json` has one handler per event with `bash` (macOS / Linux), `powershell` (Windows) and `timeoutSec`. Both commands run `node` on `PATH` with `${PLUGIN_ROOT}`, which Copilot substitutes in the command text.
+
+`scripts/collector-url-mcp.mjs` is a copy of the Cursor plugin's script. Keep them in sync.
 
 ### Codex
 

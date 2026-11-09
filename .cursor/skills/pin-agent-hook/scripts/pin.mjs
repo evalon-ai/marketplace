@@ -26,12 +26,13 @@ if (!semver.test(version || "")) {
 
 const pin = `@ev-ai/agent-hook${version ? `@${version}` : ""}`;
 
-const PLUGIN_DIRS = ["plugins/claude", "plugins/cursor", "plugins/codex"];
+const PLUGIN_DIRS = ["plugins/claude", "plugins/cursor", "plugins/codex", "plugins/copilot"];
 
 const PLUGIN_MANIFESTS = [
   "plugins/claude/.claude-plugin/plugin.json",
   "plugins/cursor/.cursor-plugin/plugin.json",
   "plugins/codex/.codex-plugin/plugin.json",
+  "plugins/copilot/plugin.json",
 ];
 
 /** Every runner publishes the plugin under one name; the dir names the runner. */

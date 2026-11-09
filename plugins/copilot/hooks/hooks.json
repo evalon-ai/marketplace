@@ -1,0 +1,69 @@
+{
+  "version": 1,
+  "hooks": {
+    "SessionStart": [
+      {
+        "type": "command",
+        "bash": "node \"${PLUGIN_ROOT}/dist/launcher.mjs\" --runner copilot ; exit 0",
+        "powershell": "node \"${PLUGIN_ROOT}\\dist\\launcher.mjs\" --runner copilot; exit 0",
+        "timeoutSec": 10
+      }
+    ],
+    "UserPromptSubmit": [
+      {
+        "type": "command",
+        "bash": "node \"${PLUGIN_ROOT}/dist/launcher.mjs\" --runner copilot ; exit 0",
+        "powershell": "node \"${PLUGIN_ROOT}\\dist\\launcher.mjs\" --runner copilot; exit 0",
+        "timeoutSec": 5
+      }
+    ],
+    "PreToolUse": [
+      {
+        "type": "command",
+        "bash": "node \"${PLUGIN_ROOT}/dist/launcher.mjs\" --runner copilot ; exit 0",
+        "powershell": "node \"${PLUGIN_ROOT}\\dist\\launcher.mjs\" --runner copilot; exit 0",
+        "timeoutSec": 5
+      }
+    ],
+    "PostToolUse": [
+      {
+        "type": "command",
+        "bash": "node \"${PLUGIN_ROOT}/dist/launcher.mjs\" --runner copilot ; exit 0",
+        "powershell": "node \"${PLUGIN_ROOT}\\dist\\launcher.mjs\" --runner copilot; exit 0",
+        "timeoutSec": 5
+      }
+    ],
+    "SubagentStart": [
+      {
+        "type": "command",
+        "bash": "node \"${PLUGIN_ROOT}/dist/launcher.mjs\" --runner copilot ; exit 0",
+        "powershell": "node \"${PLUGIN_ROOT}\\dist\\launcher.mjs\" --runner copilot; exit 0",
+        "timeoutSec": 5
+      }
+    ],
+    "SubagentStop": [
+      {
+        "type": "command",
+        "bash": "node \"${PLUGIN_ROOT}/dist/launcher.mjs\" --runner copilot ; exit 0",
+        "powershell": "node \"${PLUGIN_ROOT}\\dist\\launcher.mjs\" --runner copilot; exit 0",
+        "timeoutSec": 5
+      }
+    ],
+    "Stop": [
+      {
+        "type": "command",
+        "bash": "node \"${PLUGIN_ROOT}/dist/launcher.mjs\" --runner copilot ; exit 0",
+        "powershell": "node \"${PLUGIN_ROOT}\\dist\\launcher.mjs\" --runner copilot; exit 0",
+        "timeoutSec": 5
+      }
+    ],
+    "SessionEnd": [
+      {
+        "type": "command",
+        "bash": "node \"${PLUGIN_ROOT}/dist/launcher.mjs\" --runner copilot ; exit 0",
+        "powershell": "node \"${PLUGIN_ROOT}\\dist\\launcher.mjs\" --runner copilot; exit 0",
+        "timeoutSec": 5
+      }
+    ]
+  }
+}
