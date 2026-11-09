@@ -1,0 +1,88 @@
+{
+  "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "sh -c 'node \"${PLUGIN_ROOT}/dist/launcher.mjs\" --runner codex; exit 0'",
+            "commandWindows": "node (Join-Path (Get-Item Env:PLUGIN_ROOT).Value 'dist/launcher.mjs') --runner codex; exit 0",
+            "statusMessage": "ev-ai runtime report"
+          }
+        ]
+      }
+    ],
+    "UserPromptSubmit": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "sh -c 'node \"${PLUGIN_ROOT}/dist/launcher.mjs\" --runner codex; exit 0'",
+            "commandWindows": "node (Join-Path (Get-Item Env:PLUGIN_ROOT).Value 'dist/launcher.mjs') --runner codex; exit 0",
+            "statusMessage": "ev-ai runtime report"
+          }
+        ]
+      }
+    ],
+    "PreToolUse": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "sh -c 'node \"${PLUGIN_ROOT}/dist/launcher.mjs\" --runner codex; exit 0'",
+            "commandWindows": "node (Join-Path (Get-Item Env:PLUGIN_ROOT).Value 'dist/launcher.mjs') --runner codex; exit 0",
+            "statusMessage": "ev-ai runtime report"
+          }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "sh -c 'node \"${PLUGIN_ROOT}/dist/launcher.mjs\" --runner codex; exit 0'",
+            "commandWindows": "node (Join-Path (Get-Item Env:PLUGIN_ROOT).Value 'dist/launcher.mjs') --runner codex; exit 0",
+            "statusMessage": "ev-ai runtime report"
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "sh -c 'node \"${PLUGIN_ROOT}/dist/launcher.mjs\" --runner codex; exit 0'",
+            "commandWindows": "node (Join-Path (Get-Item Env:PLUGIN_ROOT).Value 'dist/launcher.mjs') --runner codex; exit 0",
+            "statusMessage": "ev-ai runtime report"
+          }
+        ]
+      }
+    ],
+    "SubagentStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "sh -c 'node \"${PLUGIN_ROOT}/dist/launcher.mjs\" --runner codex; exit 0'",
+            "commandWindows": "node (Join-Path (Get-Item Env:PLUGIN_ROOT).Value 'dist/launcher.mjs') --runner codex; exit 0",
+            "statusMessage": "ev-ai runtime report"
+          }
+        ]
+      }
+    ],
+    "SubagentStop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "sh -c 'node \"${PLUGIN_ROOT}/dist/launcher.mjs\" --runner codex; exit 0'",
+            "commandWindows": "node (Join-Path (Get-Item Env:PLUGIN_ROOT).Value 'dist/launcher.mjs') --runner codex; exit 0",
+            "statusMessage": "ev-ai runtime report"
+          }
+        ]
+      }
+    ]
+  }
+}

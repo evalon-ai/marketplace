@@ -1,0 +1,71 @@
+{
+  "version": 1,
+  "hooks": {
+    "sessionStart": [
+      {
+        "timeout": 10,
+        "command": "node \"${CURSOR_PLUGIN_ROOT}/dist/launcher.mjs\" --runner cursor ; exit 0"
+      }
+    ],
+    "beforeSubmitPrompt": [
+      {
+        "timeout": 5,
+        "command": "node \"${CURSOR_PLUGIN_ROOT}/dist/launcher.mjs\" --runner cursor ; exit 0"
+      }
+    ],
+    "preToolUse": [
+      {
+        "timeout": 5,
+        "command": "node \"${CURSOR_PLUGIN_ROOT}/dist/launcher.mjs\" --runner cursor ; exit 0"
+      }
+    ],
+    "postToolUse": [
+      {
+        "timeout": 5,
+        "command": "node \"${CURSOR_PLUGIN_ROOT}/dist/launcher.mjs\" --runner cursor ; exit 0"
+      }
+    ],
+    "postToolUseFailure": [
+      {
+        "timeout": 5,
+        "command": "node \"${CURSOR_PLUGIN_ROOT}/dist/launcher.mjs\" --runner cursor ; exit 0"
+      }
+    ],
+    "beforeShellExecution": [
+      {
+        "timeout": 5,
+        "command": "node \"${CURSOR_PLUGIN_ROOT}/dist/launcher.mjs\" --runner cursor ; exit 0"
+      }
+    ],
+    "beforeReadFile": [
+      {
+        "timeout": 5,
+        "command": "node \"${CURSOR_PLUGIN_ROOT}/dist/launcher.mjs\" --runner cursor ; exit 0"
+      }
+    ],
+    "beforeMCPExecution": [
+      {
+        "timeout": 5,
+        "command": "node \"${CURSOR_PLUGIN_ROOT}/dist/launcher.mjs\" --runner cursor ; exit 0"
+      }
+    ],
+    "subagentStart": [
+      {
+        "timeout": 5,
+        "command": "node \"${CURSOR_PLUGIN_ROOT}/dist/launcher.mjs\" --runner cursor ; exit 0"
+      }
+    ],
+    "subagentStop": [
+      {
+        "timeout": 5,
+        "command": "node \"${CURSOR_PLUGIN_ROOT}/dist/launcher.mjs\" --runner cursor ; exit 0"
+      }
+    ],
+    "stop": [
+      {
+        "timeout": 5,
+        "command": "node \"${CURSOR_PLUGIN_ROOT}/dist/launcher.mjs\" --runner cursor ; exit 0"
+      }
+    ]
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "name": "ev-ai-agent-hooks",
+  "version": "1.3.9",
+  "description": "Layer-3 runtime telemetry hooks (observe-only, fail-open).",
+  "author": {
+    "name": "ev-ai",
+    "email": "platform@ev.ai"
+  },
+  "license": "Proprietary",
+  "keywords": [
+    "ev-ai",
+    "runtime",
+    "telemetry",
+    "hooks"
+  ],
+  "interface": {
+    "displayName": "ev-ai Agent Hooks",
+    "shortDescription": "Observe-only runtime telemetry hooks for Codex.",
+    "longDescription": "Provides Layer-3 runtime telemetry metadata for Codex sessions while keeping execution observe-only and fail-open.",
+    "developerName": "ev-ai",
+    "category": "Developer Tools",
+    "capabilities": [
+      "Hooks",
+      "Telemetry"
+    ],
+    "defaultPrompt": [
+      "Review the runtime telemetry hook setup."
+    ]
+  }
+}

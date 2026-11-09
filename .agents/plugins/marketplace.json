@@ -1,0 +1,20 @@
+{
+  "name": "ev-ai-marketplace",
+  "interface": {
+    "displayName": "ev-ai Marketplace"
+  },
+  "plugins": [
+    {
+      "name": "ev-ai-agent-hooks",
+      "source": {
+        "source": "local",
+        "path": "./plugins/codex"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Developer Tools"
+    }
+  ]
+}

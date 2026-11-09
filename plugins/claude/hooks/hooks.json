@@ -1,0 +1,148 @@
+{
+  "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "timeout": 10,
+            "async": true,
+            "command": "node \"${CLAUDE_PLUGIN_ROOT}/dist/launcher.mjs\" --runner claude ; exit 0"
+          }
+        ]
+      }
+    ],
+    "UserPromptExpansion": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "timeout": 5,
+            "async": true,
+            "command": "node \"${CLAUDE_PLUGIN_ROOT}/dist/launcher.mjs\" --runner claude ; exit 0"
+          }
+        ]
+      }
+    ],
+    "UserPromptSubmit": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "timeout": 5,
+            "async": true,
+            "command": "node \"${CLAUDE_PLUGIN_ROOT}/dist/launcher.mjs\" --runner claude ; exit 0"
+          }
+        ]
+      }
+    ],
+    "PreToolUse": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "timeout": 5,
+            "async": true,
+            "command": "node \"${CLAUDE_PLUGIN_ROOT}/dist/launcher.mjs\" --runner claude ; exit 0"
+          }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "timeout": 5,
+            "async": true,
+            "command": "node \"${CLAUDE_PLUGIN_ROOT}/dist/launcher.mjs\" --runner claude ; exit 0"
+          }
+        ]
+      }
+    ],
+    "PostToolUseFailure": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "timeout": 5,
+            "async": true,
+            "command": "node \"${CLAUDE_PLUGIN_ROOT}/dist/launcher.mjs\" --runner claude ; exit 0"
+          }
+        ]
+      }
+    ],
+    "PermissionDenied": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "timeout": 5,
+            "async": true,
+            "command": "node \"${CLAUDE_PLUGIN_ROOT}/dist/launcher.mjs\" --runner claude ; exit 0"
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "timeout": 5,
+            "async": true,
+            "command": "node \"${CLAUDE_PLUGIN_ROOT}/dist/launcher.mjs\" --runner claude ; exit 0"
+          }
+        ]
+      }
+    ],
+    "StopFailure": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "timeout": 5,
+            "async": true,
+            "command": "node \"${CLAUDE_PLUGIN_ROOT}/dist/launcher.mjs\" --runner claude ; exit 0"
+          }
+        ]
+      }
+    ],
+    "SessionEnd": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "timeout": 5,
+            "async": true,
+            "command": "node \"${CLAUDE_PLUGIN_ROOT}/dist/launcher.mjs\" --runner claude ; exit 0"
+          }
+        ]
+      }
+    ],
+    "SubagentStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "timeout": 5,
+            "async": true,
+            "command": "node \"${CLAUDE_PLUGIN_ROOT}/dist/launcher.mjs\" --runner claude ; exit 0"
+          }
+        ]
+      }
+    ],
+    "SubagentStop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "timeout": 5,
+            "async": true,
+            "command": "node \"${CLAUDE_PLUGIN_ROOT}/dist/launcher.mjs\" --runner claude ; exit 0"
+          }
+        ]
+      }
+    ]
+  }
+}
