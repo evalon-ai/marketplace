@@ -3,7 +3,7 @@
   "name": "ev-ai-marketplace",
   "owner": {
     "name": "ev-ai",
-    "email": "platform@ev.ai"
+    "email": "support@evalon.ai"
   },
   "metadata": {
     "description": "Layer-3 runtime telemetry hooks for Claude Code, Cursor, and Codex."

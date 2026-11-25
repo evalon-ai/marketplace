@@ -29,7 +29,7 @@ Each plugin ships its own runtime under `dist/`: the compiled `launcher.mjs` and
     └── copilot/                      # GitHub Copilot — plugin.json at the root, plus scripts/collector-url-mcp.mjs
 ```
 
-Every file above except `plugin.json` is **generated** — never hand-edit them here. They are copied from (or stamped by) `packages/agent-hook` in the monorepo via `sync:hooks` (see [Releasing](#releasing)).
+Every file above except `plugin.json` is **generated** from the `@ev-ai/agent-hook` package — never hand-edit them here (see [Releasing](#releasing)).
 
 `package.json` carries the package version in the *payload* rather than in a hook command, which is what lets a bump ship a new payload without rewriting `hooks.json`. The `dist/` layout mirrors the npm package: the launcher finds its siblings and `../package.json` relative to itself.
 
@@ -98,7 +98,7 @@ Configure collector URL:
 
 ```bash
 npx -y @ev-ai/agent-hook@1.4.0 configure \
-  --url "https://<collector-host>/<orgToken>/hook"
+  --url "https://hooks.evalon.ai/<orgToken>/hook"
 ```
 
 Commit the collector manifest (`collector_url`).
@@ -122,7 +122,7 @@ Put this in Claude managed settings (admin console, MDM, or `managed-settings.js
   },
   "pluginConfigs": {
     "ev-ai-agent-hooks@ev-ai-marketplace": {
-      "options": { "collector_url": "https://<collector-host>/<orgToken>/hook" }
+      "options": { "collector_url": "https://hooks.evalon.ai/<orgToken>/hook" }
     }
   }
 }
@@ -166,20 +166,19 @@ Do **not** also keep per-event blocks in runner settings — that double-POSTs.
 
 ## Releasing
 
-Payload and event maps are generated from `packages/agent-hook` in the monorepo. From a monorepo checkout:
+### The payload
 
-```bash
-yarn workspace @ev-ai/agent-hook build
-yarn workspace @ev-ai/agent-hook sync:hooks -- /path/to/marketplace
-```
+Each plugin ships the `@ev-ai/agent-hook` payload in `dist/` (`launcher.mjs`, `launcher-update.mjs` and `hook.mjs`), with its version in the plugin's `package.json`. The payload is built from the package, not edited here.
 
-That copies `dist/launcher.mjs`, `dist/launcher-update.mjs` and `dist/hook.mjs` into all three plugin trees, writes each `package.json`, and rewrites every `hooks/hooks.json`.
+`dist/` is identical in every plugin; a release that updates some vendors but not others is rejected.
 
-Then set the plugin manifest versions to the package version here (also run automatically as part of monorepo `/publish-agent-hooks`):
+The plugin version in each `plugin.json` is separate from the package version. It is bumped when a release is published, and every release is listed in [CHANGELOG.md](CHANGELOG.md).
 
-```bash
-/pin-agent-hook <X.Y.Z>
-# or: node .cursor/skills/pin-agent-hook/scripts/pin.mjs <X.Y.Z>
-```
+### Publishing a release
 
-Commit and push; the plugin payload ships with the plugin.
+This repository doesn't take direct pushes or pull requests. Every change arrives as a single `Release vX.Y.Z` commit from an automated release process:
+
+1. A maintainer starts the release and another maintainer approves it before anything is published.
+2. Checks run before anything is pushed: identical `dist/` across vendors, version and changelog, no internal references, no secrets.
+3. The release commit is pushed to `release/next`, and its pull request is opened and squash-merged.
+4. The `vX.Y.Z` tag and GitHub Release are created from the merge.

@@ -3,7 +3,7 @@
   "description": "Runtime telemetry hooks for Claude Code, Cursor, and Codex.",
   "owner": {
     "name": "ev-ai",
-    "email": "platform@ev.ai"
+    "email": "support@evalon.ai"
   },
   "plugins": [
     {
