@@ -1,10 +1,10 @@
 {
   "name": "ev-ai-agent-hooks",
-  "version": "1.4.0",
+  "version": "1.4.1",
   "description": "Runtime telemetry hooks (observe-only, fail-open).",
   "author": {
     "name": "ev-ai",
-    "email": "platform@ev.ai"
+    "email": "support@evalon.ai"
   },
   "license": "Proprietary",
   "keywords": [
@@ -18,7 +18,7 @@
     "collector_url": {
       "type": "string",
       "title": "Collector URL",
-      "description": "ev-ai collector URL (https://<collector-host>/<orgToken>/hook); org admins preset it via managed pluginConfigs."
+      "description": "ev-ai collector URL (https://hooks.evalon.ai/<orgToken>/hook); org admins preset it via managed pluginConfigs."
     }
   }
 }

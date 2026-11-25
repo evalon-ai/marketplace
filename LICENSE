@@ -1,48 +1,48 @@
-Evalon Proprietary License
+Evalon AI Proprietary License
 Copyright (c) 2026 Evalon AI. All rights reserved.
 
 This repository and the ev-ai-agent-hooks plugins (the "Software") are
-proprietary software of Evalon AI ("Evalon"). The source is published so that
+proprietary software of Evalon AI. The source is published so that
 enterprise security teams can inspect what the Software does. Publication is
-not an open-source grant and does not waive Evalon's copyright.
+not an open-source grant and does not waive Evalon AI's copyright.
 
 1. Grant
 
-If you have a current, paid Evalon subscription (or other written Evalon
-agreement that covers this Software), Evalon grants you a non-exclusive,
+If you have a current, paid Evalon AI subscription (or other written Evalon AI
+agreement that covers this Software), Evalon AI grants you a non-exclusive,
 non-transferable, non-sublicensable, revocable license to install and run the
 Software solely to send runtime telemetry from your organization's Claude Code,
-Cursor, and Codex sessions to the Evalon collector (or other destination)
-Evalon has issued to you.
+Cursor, and Codex sessions to the Evalon AI collector (or other destination)
+Evalon AI has issued to you.
 
-Your Evalon master subscription agreement, order form, or terms of service
-(the "Customer Agreement") governs your use of Evalon's services. If this
+Your Evalon AI master subscription agreement, order form, or terms of service
+(the "Customer Agreement") governs your use of Evalon AI's services. If this
 license and the Customer Agreement conflict, the Customer Agreement controls.
 
 2. Restrictions
 
-You may not, except as Evalon has agreed in writing:
+You may not, except as Evalon AI has agreed in writing:
 
   (a) use the Software except as Section 1 allows;
   (b) use the Software to send data to any collector, product, or service that
-      competes with Evalon;
+      competes with Evalon AI;
   (c) copy, modify, distribute, sell, lease, or sublicense the Software,
       except for copies needed for your licensed internal use and for
       inspection by your own security, legal, or compliance personnel;
   (d) remove or alter proprietary notices;
-  (e) use Evalon or ev-ai names or marks except to identify the Software as
-      Evalon's.
+  (e) use Evalon AI or ev-ai names or marks except to identify the Software as
+      Evalon AI's.
 
 3. No other rights
 
-Evalon retains all right, title, and interest in the Software. No rights are
+Evalon AI retains all right, title, and interest in the Software. No rights are
 granted by implication, estoppel, or otherwise, other than the license in
 Section 1. Contributors and third parties have no license except as this
 document or a Customer Agreement expressly grants.
 
 4. Termination
 
-This license ends when your Customer Agreement ends or Evalon terminates it
+This license ends when your Customer Agreement ends or Evalon AI terminates it
 for material breach. On termination you must stop using the Software and
 uninstall the plugins. Sections 2, 3, 5, and 6 survive.
 
@@ -54,14 +54,14 @@ AND NON-INFRINGEMENT.
 
 6. Liability
 
-TO THE MAXIMUM EXTENT PERMITTED BY LAW, EVALON IS NOT LIABLE FOR ANY
+TO THE MAXIMUM EXTENT PERMITTED BY LAW, EVALON AI IS NOT LIABLE FOR ANY
 INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL, OR PUNITIVE DAMAGES, OR ANY
-LOSS OF PROFITS, DATA, OR GOODWILL. EVALON'S TOTAL LIABILITY ARISING OUT OF
-THE SOFTWARE WILL NOT EXCEED THE FEES YOU PAID EVALON FOR THE SOFTWARE IN THE
+LOSS OF PROFITS, DATA, OR GOODWILL. EVALON AI'S TOTAL LIABILITY ARISING OUT OF
+THE SOFTWARE WILL NOT EXCEED THE FEES YOU PAID EVALON AI FOR THE SOFTWARE IN THE
 TWELVE (12) MONTHS BEFORE THE CLAIM. If a Customer Agreement sets a different
 cap, that cap controls.
 
 7. Contact
 
-Evalon AI — platform@ev.ai
+Evalon AI — support@evalon.ai
 https://github.com/evalon-ai/marketplace
